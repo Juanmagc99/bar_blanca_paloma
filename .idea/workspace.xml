@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4b09e836-baac-4cf3-b354-7c2d6ec3521d" name="Default Changelist" comment="Subiendo al repo" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Juanma" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ProyectoBarBlancaPaloma" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMP" />
+  <component name="ProjectId" id="1awM2oGcxMeM9YoKk3LO0I57gp2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ProyectoBarBlancaPaloma" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b09e836-baac-4cf3-b354-7c2d6ec3521d" name="Default Changelist" comment="" />
+      <created>1587641998545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587641998545</updated>
+      <workItem from="1587642000104" duration="3928000" />
+      <workItem from="1587735461618" duration="71000" />
+      <workItem from="1587750439297" duration="2170000" />
+      <workItem from="1587752634537" duration="587000" />
+      <workItem from="1587754501208" duration="34000" />
+    </task>
+    <task id="LOCAL-00001" summary="Subiendo al repo">
+      <created>1587752195657</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587752195657</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/../ProyectoBarBlancaPaloma" />
+    </ignored-roots>
+    <MESSAGE value="Subiendo al repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subiendo al repo" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="759" y="84" key="#CLI_Interpreters" timestamp="1587735529160">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="84" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1587735529160" />
+    <state x="508" y="71" width="749" height="888" key="CommitChangelistDialog2" timestamp="1587752604907">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="508" y="71" width="749" height="888" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587752604907" />
+    <state x="847" y="448" key="FileChooserDialogImpl" timestamp="1587752616241">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="847" y="448" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587752616241" />
+    <state x="782" y="435" key="Github.CreateGistDialog" timestamp="1587750913988">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="782" y="435" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587750913988" />
+    <state x="985" y="628" key="Github.ShareDialog" timestamp="1587751692771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="985" y="628" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587751692771" />
+    <state x="680" y="72" key="SettingsEditor" timestamp="1587754534354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="680" y="72" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587754534354" />
+  </component>
+</project>
