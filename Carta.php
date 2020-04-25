@@ -33,7 +33,6 @@
     </div>
 
     <div id="Medias" class="tab_carta_cont">
-        <h3>Medias</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -59,7 +58,6 @@
     </div>
 
     <div id="Combinados" class="tab_carta_cont">
-        <h3>Cambinados</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -85,7 +83,6 @@
     </div>
 
     <div id="Carnes" class="tab_carta_cont">
-        <h3>Carnes</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -111,7 +108,6 @@
     </div>
 
     <div id="Pescados" class="tab_carta_cont">
-        <h3>Pescados</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -137,7 +133,6 @@
     </div>
 
     <div id="Bebidas" class="tab_carta_cont">
-        <h3>Bebidas</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -163,7 +158,6 @@
     </div>
 
     <div id="Postres" class="tab_carta_cont">
-        <h3>Postres</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -193,7 +187,7 @@
         function openCarta(evt, tablaProducto) {
             var i, tab_cart_cont, carta_button;
 
-            tab_cart_cont = document.getElementsByClassName("tab_cart_cont");
+            tab_cart_cont = document.getElementsByClassName("tab_carta_cont");
             for (i = 0; i < tab_cart_cont.length; i++){
                 tab_cart_cont[i].style.display = "none";
             }
