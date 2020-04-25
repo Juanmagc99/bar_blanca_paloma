@@ -1,0 +1,154 @@
+body {
+  background-color: #0F398C;
+}
+
+.tablaEnlaces{
+  margin: 20px;
+  border: black 2.5px solid;
+  border-collapse: collapse;
+}
+
+.enlace{
+  text-decoration: none;
+  color: #000000;
+}
+
+.botonCarta{
+  border: black 2.5px solid;
+  background-color: #6397FF;
+  padding:7px;
+  font-size:15px;
+  transition: 0.3s;
+}
+
+.boton{
+  border: black 2.5px solid;
+  background-color: #C3C3C3;
+  padding: 7px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.botonCarta:hover{
+   background-color: #1D6EF3;
+}
+
+.boton:hover{
+   background-color: #757575;
+}
+
+.tablaCarta{
+  margin: 20px;
+  border: black 2.5px solid;
+  border-collapse: collapse;
+}
+.celdaNombre1{
+  border: black 2.5px solid;
+  background-color: #A8A8A8;
+  padding:7px;
+  font-size:15px;
+  width: 350px;
+  
+}
+.celdaPrecio1{
+  border: black 2.5px solid;
+  background-color: #A8A8A8;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
+}
+.celdaNombre{
+  border: black 2.5px solid;
+  background-color: #ffffff;
+  padding:7px;
+  font-size:15px;
+  width: 350px;
+  
+}
+.celdaPrecio{
+  border: black 2.5px solid;
+  background-color: #ffffff;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
+}
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Estilo del tab de la izquierda */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  width: 30%;
+  height: 386px;
+}
+
+/* estilo de los botones del tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Color que tiene el boton al pasar por encima */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Color que tiene el boton al pulsarse*/
+.tab button.cursor{
+  background-color: #ccc;
+}
+
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 50x solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+.tablaCarta{
+  margin: 20px;
+  border: black 2.5px solid;
+  border-collapse: collapse;
+}
+.celdaNombre1{
+  border: black 2.5px solid;
+  background-color: #A8A8A8;
+  padding:7px;
+  font-size:15px;
+  width: 350px;
+  
+}
+.celdaPrecio1{
+  border: black 2.5px solid;
+  background-color: #A8A8A8;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
+}
+.celdaNombre{
+  border: black 2.5px solid;
+  background-color: #ffffff;
+  padding:7px;
+  font-size:15px;
+  width: 350px;
+  
+}
+.celdaPrecio{
+  border: black 2.5px solid;
+  background-color: #ffffff;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
+}
