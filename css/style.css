@@ -1,54 +1,42 @@
 
-#seccion_carta {
-    position: absolute;
-    height: 100%;
-    background-color: #1B1B64;
-}
-
-#menu_comida {
-    display: inline-flex;
-    float: left;
-    background-color: #1B1B64;
-    height: 100%;
-
-}
-
-#menu_comida ul li{
-    font-family: Consolas;
-    list-style: none;
-    background-color: gray;
-    padding-right: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #1B1B64;
-    border-left: 2px solid #1B1B64;
-    border-top: 2px solid #1B1B64;
-    border-radius: 8px;
-}
-
-#menu_comida li:hover{
-    background-color: dimgrey;
-}
-#tablas_carta{
-    background-color: white;
-    height: auto;
-    min-height: 20%;
-}
-
-#tablas_carta th{
-    background-color: gray;
-}
-
-#tablas_carta, th, td {
-    border: 2px solid black;
-    border-collapse: collapse;
-    padding-right: 60px;
-    padding-left: 60px;
-}
-
-#tablas_carta, td{
-    font-size: 12px;
-}
-
 body {
     background-color: #1B1B64;
+}
+
+.tab_carta_inicio {
+    float: left;
+    width: 25%;
+    height: 300px;
+}
+
+.carta_button {
+    display: block;
+    background-color: gray;
+    color: black;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Fira Code";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.carta_button:hover {
+    background-color: rgba(72,76,79,0.92);
+}
+
+.carta_button.active {
+    background-color: rgba(72,76,79,0.92);
+}
+
+.tab_carta_cont {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
 }
