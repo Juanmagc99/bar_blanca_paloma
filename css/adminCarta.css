@@ -1,5 +1,12 @@
+* {box-sizing: border-box}
+
 body {
   background-color: #0F398C;
+  font-family: "Lato", sans-serif;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .tablaEnlaces{
@@ -16,17 +23,21 @@ body {
 .botonCarta{
   border: black 2.5px solid;
   background-color: #6397FF;
-  padding:7px;
+  width:120px;
+  height:40px;
   font-size:15px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .boton{
   border: black 2.5px solid;
   background-color: #C3C3C3;
-  padding: 7px;
+  width:120px;
+  height:40px;
   font-size: 15px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .botonCarta:hover{
@@ -37,10 +48,35 @@ body {
    background-color: #757575;
 }
 
+.home{
+  border: black 2.5px solid;
+  background-color: #C3C3C3;
+  padding: 7px;
+  font-size: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.home:hover{
+   background-color: #757575;
+}
+
+.enlaceHome{
+  text-decoration: none;
+  color: #000000;
+}
+
+.divHome{
+  float: right;
+  margin: 0px;
+  margin-right:20px;
+}
+
 .tablaCarta{
   margin: 20px;
   border: black 2.5px solid;
   border-collapse: collapse;
+  background: #FAFAFA;
 }
 .celdaNombre1{
   border: black 2.5px solid;
@@ -58,97 +94,133 @@ body {
   width: 200px;
 }
 .celdaNombre{
-  border: black 2.5px solid;
-  background-color: #ffffff;
   padding:7px;
   font-size:15px;
   width: 350px;
   
 }
 .celdaPrecio{
-  border: black 2.5px solid;
-  background-color: #ffffff;
+  border-left: black 2.5px solid;
+  border-right: black 2.5px solid;
   padding:7px;
   font-size:15px;
   width: 200px;
 }
-* {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
 
 /* Estilo del tab de la izquierda */
 .tab {
   float: left;
-  border: 1px solid #ccc;
-  background-color: #ffffff;
-  width: 30%;
-  height: 386px;
+  background-color: #0F398C;
+  width: 13%;
+  height: 150px;
 }
 
 /* estilo de los botones del tab */
-.tab button {
+.tablinks {
   display: block;
-  background-color: inherit;
+  background-color: #A8A8A8;
   color: black;
-  padding: 22px 16px;
+  padding: 3px 10px;
   width: 100%;
-  border: none;
-  outline: none;
+  border: black 1.3px solid;
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: bolder;
+  font-family: "Lato", sans-serif;
 }
 
 /* Color que tiene el boton al pasar por encima */
-.tab button:hover {
-  background-color: #ddd;
+.tablinks:hover {
+  background-color: #727373;
 }
 
 /* Color que tiene el boton al pulsarse*/
-.tab button.cursor{
-  background-color: #ccc;
+.tablinks.cursor{
+  background-color: #727373;
 }
 
+/* Style the tab content */
 .tabcontent {
   float: left;
+  border: black 2.5px solid;
+  background: #FFFFFF;
   padding: 0px 12px;
-  border: 50x solid #ccc;
-  width: 70%;
-  border-left: none;
-  height: 300px;
+  height: 500px;
 }
-.tablaCarta{
-  margin: 20px;
-  border: black 2.5px solid;
-  border-collapse: collapse;
+
+.botonEditar{
+  float:right;
+  border: black 2px solid;
+  background-color: #FFFFFF;
+  width:60px;
+  height:30px;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: bold;
+  cursor: pointer;
 }
-.celdaNombre1{
-  border: black 2.5px solid;
-  background-color: #A8A8A8;
-  padding:7px;
-  font-size:15px;
-  width: 350px;
-  
+
+.botonEditar:hover {
+  background-color: #05CB74;
 }
-.celdaPrecio1{
-  border: black 2.5px solid;
-  background-color: #A8A8A8;
-  padding:7px;
-  font-size:15px;
-  width: 200px;
+
+.botonDelete{
+  float:right;
+  border: black 2px solid;
+  background-color: #FFFFFF;
+  width:69px;
+  height:30px;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: bold;
+  cursor: pointer;
 }
-.celdaNombre{
-  border: black 2.5px solid;
-  background-color: #ffffff;
-  padding:7px;
-  font-size:15px;
-  width: 350px;
-  
+
+.botonDelete:hover {
+  background-color: #DE0707;
 }
-.celdaPrecio{
-  border: black 2.5px solid;
-  background-color: #ffffff;
-  padding:7px;
-  font-size:15px;
-  width: 200px;
+
+.blanco{
+  background: #FFFFFF;
+  width:70px;
+  border:white 2.5px solid;
+}
+
+.blanco1{
+  background: #FFFFFF;
+  width:70px;
+  border:white 2.5px solid;
+}
+
+.edit{
+  border:white 2.5px solid;
+  width: 70px;
+  background: #FFFFFF;
+}
+
+.delete{
+  border:white 2.5px solid;
+  width: 70px;
+  background: #FFFFFF;
+}
+
+.botonAdd{
+ border: black 2px solid;
+ background-color: #FFFFFF;
+ width:65px;
+ height:70px;
+ font-size: 40px;
+ transition: 0.3s;
+ font-weight: bold;
+ cursor: pointer;
+ text-align: center;
+}
+
+.botonAdd:hover {
+  background-color: #0EE1DE;
+
+.tableAdd{
+ 
 }
