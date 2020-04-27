@@ -11,7 +11,7 @@
         ?>
     </div>
 
-    <div class="tab_carta_inicio">
+    <div class="carta_inicio">
         <button class="carta_button" onclick="openCarta(event, 'Medias')">
             Medias
         </button>
@@ -32,8 +32,8 @@
         </button>
     </div>
 
-    <div id="Medias" class="tab_carta_cont">
-        <table>
+    <div id="Medias" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -57,8 +57,8 @@
         </table>
     </div>
 
-    <div id="Combinados" class="tab_carta_cont">
-        <table>
+    <div id="Combinados" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -82,8 +82,8 @@
         </table>
     </div>
 
-    <div id="Carnes" class="tab_carta_cont">
-        <table>
+    <div id="Carnes" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -107,8 +107,8 @@
         </table>
     </div>
 
-    <div id="Pescados" class="tab_carta_cont">
-        <table>
+    <div id="Pescados" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -132,8 +132,8 @@
         </table>
     </div>
 
-    <div id="Bebidas" class="tab_carta_cont">
-        <table>
+    <div id="Bebidas" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -157,12 +157,11 @@
         </table>
     </div>
 
-    <div id="Postres" class="tab_carta_cont">
-        <table>
+    <div id="Postres" class="carta_cont">
+        <table class="tabla_carta">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
-                <th>Stock</th>
                 <th>Stock</th>
             </tr>
             <tr>
@@ -187,7 +186,7 @@
         function openCarta(evt, tablaProducto) {
             var i, tab_cart_cont, carta_button;
 
-            tab_cart_cont = document.getElementsByClassName("tab_carta_cont");
+            tab_cart_cont = document.getElementsByClassName("carta_cont");
             for (i = 0; i < tab_cart_cont.length; i++){
                 tab_cart_cont[i].style.display = "none";
             }
