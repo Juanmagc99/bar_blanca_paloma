@@ -12,7 +12,7 @@
     </div>
 
     <div class="carta_inicio">
-        <button class="carta_button" onclick="openCarta(event, 'Medias')">
+        <button class="carta_button" onclick="openCarta(event, 'Medias') " id="defaul">
             Medias
         </button>
         <button class="carta_button" onclick="openCarta(event, 'Combinados')">
@@ -199,6 +199,7 @@
             document.getElementById(tablaProducto).style.display = "block";
             evt.currentTarget.className += " active";
         }
+    document.getElementById("default").click();
     </script>
 </body>
 </html>
