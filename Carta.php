@@ -12,7 +12,7 @@
     </div>
 
     <div class="carta_inicio">
-        <button class="carta_button" onclick="openCarta(event, 'Medias') " id="defaul">
+        <button class="carta_button" onclick="openCarta(event, 'Medias') " id="default">
             Medias
         </button>
         <button class="carta_button" onclick="openCarta(event, 'Combinados')">
