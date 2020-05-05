@@ -10,7 +10,7 @@
 	<tr>
 		<th class=boton><a class=enlace href="adminCarta.php">Gestión Carta</a></th>
 		<th class=botonMesa><a class=enlace href="adminMesas.php">Gestión Mesas</a></th>
-		<th class=boton><a class=enlace href="adminEmpleados.php">Empleados</a></th>
+		<th class=boton><a class=enlace href="gestionEmpleados.php">Empleados</a></th>
 		<th class=boton><a class=enlace href="adminEstadisticas.php">Estadisticas</a></th>
 	</tr>
     </table>

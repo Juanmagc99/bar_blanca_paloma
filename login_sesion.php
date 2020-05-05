@@ -21,6 +21,8 @@
     </br></br>
 <input type="submit" value="Entrar">
 
+<p>¿No estás registrado?<a href="tipo_cuenta.php">Registrate</a></p>
+
 </div>
 
 </body>
