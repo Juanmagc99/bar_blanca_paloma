@@ -6,9 +6,9 @@
 		$nuevoUsuario["nif"] = $_REQUEST["nif"];
 		$nuevoUsuario["nombre"] = $_REQUEST["nombre"];
 		$nuevoUsuario["apellidos"] = $_REQUEST["apellidos"];
-		$nuevoUsuario['tlfn'] = $_REQUEST["tlfn"];
-		$nuevoUsuario['poblacion'] = $_REQUEST["poblacion"];
-		$nuevoUsuario['codigoPostal'] = $_REQUEST["codigoPostal"];
+		$nuevoUsuario["tlfn"] = $_REQUEST["tlfn"];
+		$nuevoUsuario["poblacion"] = $_REQUEST["poblacion"];
+		$nuevoUsuario["codigoPostal"] = $_REQUEST["codigoPostal"];
 		$nuevoUsuario["perfil"] = $_REQUEST["perfil"];
 		$nuevoUsuario["fechaNacimiento"] = $_REQUEST["fechaNacimiento"];
 		$nuevoUsuario["email"] = $_REQUEST["email"];
@@ -27,9 +27,13 @@
 		$_SESSION["errores"] = $errores;
 		Header('Location: registro_usuario.php');
 	} else
-		Header('Location: accion_alta_usuario.php');
+		if ($nuevoUsuario["perfil"] == "Cliente"){
+			Header('Location: alta_cliente.php');
+		} else {
+			Header('Location: alta_empleado.php');
+		}
 
-
+		
 	// Validación en servidor del formulario de alta de usuario
 	
 	
@@ -54,13 +58,18 @@
 			$errores[] = $error . "<p>El email es incorrecto: " . $nuevoUsuario["email"]. "</p>";
 		}
 		
+		//Validacion fecha vacia
+		if ($nuevoUsuario["fechaNacimiento"] == ""){
+			$errores[] = "<p>La fecha de nacimiento no puede estar vacía</p>";
 		//Validacion mayor de edad
-		$mayor = 18;
-		$nacimiento = DateTime::createFromFormat('Y-m-d', $nuevoUsuario["fechaNacimiento"]);
-		$calculo = $nacimiento->diff(new DateTime());
-		$edad = $calculo -> y;
-		if($edad < $mayor){
-			$errores [] = "<p>No puedes registrarte si tienes menos de 18 años</p>";
+		} else {
+			$mayor = 18;
+			$nacimiento = DateTime::createFromFormat('Y-m-d', $nuevoUsuario["fechaNacimiento"]);
+			$calculo = $nacimiento->diff(new DateTime());
+			$edad = $calculo -> y;
+			if($edad < $mayor){
+				$errores [] = "<p>No puedes registrarte si tienes menos de 18 años</p>";
+			}
 		}
 		
 		// Validación contraseña

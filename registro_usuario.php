@@ -48,7 +48,7 @@
 	?>
 	
 	<form id="altaUsuario" method="get" action="validacion_registro_usuario.php" novalidate>
-		<p><i>TODOS LOS CAMPOS A RELLENAR SON DE CARACTER OBLIGATORIO</i><em>*</em></p>
+		<p><i>TODOS LOS CAMPOS A RELLENAR SON DE CARÁCTER OBLIGATORIO</i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			
 			<div></div><label for="nif">NIF:</label>
