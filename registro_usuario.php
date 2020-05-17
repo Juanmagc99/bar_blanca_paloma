@@ -2,13 +2,14 @@
 	session_start();
 
 	if (!isset($_SESSION['formulario'])) {
+		
 		$formulario['nif'] = "";
 		$formulario['nombre'] = "";
 		$formulario['apellidos'] = "";
 		$formulario['tlfn'] = "";
 		$formulario['poblacion'] = "";
 		$formulario['codigoPostal'] = "";
-		$formulario['perfil'] = "Cliente";
+		$formulario['categoria'] = "";
 		$formulario['fechaNacimiento'] = "";
 		$formulario['email'] = "";
 		
@@ -41,14 +42,14 @@
 		// Mostrar los erroes de validación (Si los hay)
 		if (isset($errores) && count($errores)>0) { 
 	    	echo "<div id=\"div_errores\" class=\"error\">";
-			echo "<h4> Errores en el formulario:</h4>";
+			echo "<h4> Ha cometido errores al realizar el formulario:</h4>";
     		foreach($errores as $error) echo $error; 
     		echo "</div>";
   		}
 	?>
 	
 	<form id="altaUsuario" method="get" action="validacion_registro_usuario.php" novalidate>
-		<p><i>TODOS LOS CAMPOS A RELLENAR SON DE CARÁCTER OBLIGATORIO</i><em>*</em></p>
+		<p><i>TODOS LOS CAMPOS A RELLENAR SON DE CARÁCTER OBLIGATORIO</i></p>
 		<fieldset><legend>Datos personales</legend>
 			
 			<div></div><label for="nif">NIF:</label>
@@ -86,18 +87,21 @@
 				</div>
 			
 			<div><label for="codigoPostal">Código Postal:</label>
-			<input id="codigoPostal" name="codigoPostal" type="text" size="80" value="<?php echo $formulario['codigoPostal'];?>" required/>
+			<input id="codigoPostal" name="codigoPostal" type="text" size="80" value="<?php echo $formulario["codigoPostal"];?>" required/>
 			</div>
 			
-			<div><label>Perfil:</label>
+			<div><label>Categoría:</label>
 			<label>
-				<input name="perfil" type="radio" value="Cliente" checked="checked"<?php if($formulario['perfil']=='Cliente') echo ' checked ';?>/>
-				Cliente</label>
+				<input name="categoria" type="radio" value="Gerente" <?php if($formulario['categoria']=='Gerente') echo ' checked ';?>/>
+				Gerente</label>
 			<label>
-				<input name="perfil" type="radio" value="Empleado" <?php if($formulario['perfil']=='Empleado') echo ' checked ';?>/>
-				Empleado</label>
+				<input name="categoria" type="radio" value="Camarero" <?php if($formulario['categoria']=='Camarero') echo ' checked ';?>/>
+				Camarero</label>
+			<label>
+				<input name="categoria" type="radio" value="Cocinero" <?php if($formulario['categoria']=='Cocinero') echo ' checked ';?>/>
+				Cocinero</label>
 			</div>
-			
+		
 			<div<<label for="fechaNacimiento">Fecha de nacimiento:</label>
 			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formulario['fechaNacimiento'];?>" required/>
 			</div>

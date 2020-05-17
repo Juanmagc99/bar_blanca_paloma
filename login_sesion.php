@@ -2,31 +2,23 @@
 	session_start();
 	
 	include_once("gestionBD.php");
-	include_once("gestion_clientes.php");
 	include_once("gestion_empleados.php");
 	
-	if (isset($_POST['submit'])){
-	
-	//lo que piden a los clientes
-		$nombre = $_POST['nombre'];
-		$tlfn = $_POST['tlfn'];
-	
+	if (isset($_POST["submit"])){
+
 	//lo que piden a los empleados	
-		$nif = $_POST['nif'];
-		$pass = $_POST['pass'];
+		$nif = $_POST["nif"];
+		$pass = $_POST["pass"];
 		
 		
 	$conexion = crearConexionBD();
-	$clientes = consultarCliente($conexion, $nombre, $tlfn);
 	$empleados = consultarEmpleado($conexion, $nif, $pass);
+	cerrarConexionBD($conexion);
 	
-	if ($clientes == 0 && $empleados == 0){
+	if ($empleados == 0){
 		$login = "error";
-	} else if ($empleados == 0){
-		$_SESSION['login'] = $nombre;
-		header("Location: menu.html");
-	} else if ($clientes == 0){
-		$_SESSION['login'] = $nif;
+	} else {
+		$_SESSION["login"] = $nif;
 		header("Location: menu.html");
 	}
 }
@@ -51,22 +43,26 @@
 	
 <h1>Bar Blanca Paloma</h1>
 
+<main>
+
 <?php if (isset($login)) {
 		echo "<div class=\"error\">";
-		echo "No existe ningun cliente ni empleado con esos datos introducidos";
+		echo "No existe ningun cliente con los datos introducidos";
 		echo "</div>";
 	}	
 	?>
 
-<form action="login_sesion.php" method="post">
-	<input id="user" name="user" type="text" placeholder="User..." required/>	</br></br>
-	<input id="password" name="password" type="text" placeholder="Password..." required/>
-    </br></br>
-<input type="submit" name="submit" value="submit">
+	<form action="login_sesion.php" method="post">
+		<input id="user" name="user" type="text" placeholder="NIF..." required/>	</br></br>
+		<input id="password" name="password" type="password" placeholder="Password..." required/>
+    	</br></br>
+		<input type="submit" name="submit" value="submit">
+	</form>
 
-<p>¿No estás registrado?<a href="registro_usuario.php">Registrate</a></p>
+	<p>¿No estás registrado?<a href="registro_usuario.php">Registrate</a></p>
 
 </div>
+</main>
 
 </body>
 </html>

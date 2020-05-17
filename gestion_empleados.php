@@ -8,8 +8,9 @@
 	$fechaBaja = "---";
 	
 	try {
-		$consulta = "CALL INSERTAR_USUARIO(:nif, :nombre, :apellidos, :tlfn, :poblacion, :fechaAlta, :fechaBaja, :hashContraseña, :categoria)";
+		$consulta = "CALL ADD_EMPLEADO(:nif, :nombre, :apellidos, :tlfn, :poblacion, :fechaAlta, :fechaBaja, :hashContraseña, :saltContraseña, :categoria)";
 		$stmt=$conexion->prepare($consulta);
+		
 		$stmt->bindParam(':nif',$usuario["nif"]);
 		$stmt->bindParam(':nombre',$usuario["nombre"]);
 		$stmt->bindParam(':apellidos',$usuario["apellidos"]);
@@ -17,9 +18,11 @@
 		$stmt->bindParam(':poblacion', $usuario["poblacion"]);
 		$stmt->bindParam(':fechaAlta', $fechaHoy);
 		$stmt->bindParam(':fechaBaja', $fechaBaja);
+		
 		$stmt->bindParam(':hashContraseña', $usuario["pass"]);
 		$stmt->bindParam(':saltContraseña', $usuario["confirmPass"]);
-		//$stmt->bindParam(':categoria', $usuario["categoria"]);
+		
+		$stmt->bindParam(':categoria', $usuario["categoria"]);
 
 		$stmt->execute();
 		

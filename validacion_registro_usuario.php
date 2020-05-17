@@ -3,13 +3,14 @@
 
 	
 	if (isset($_SESSION["formulario"])) {
+		
 		$nuevoUsuario["nif"] = $_REQUEST["nif"];
 		$nuevoUsuario["nombre"] = $_REQUEST["nombre"];
 		$nuevoUsuario["apellidos"] = $_REQUEST["apellidos"];
 		$nuevoUsuario["tlfn"] = $_REQUEST["tlfn"];
 		$nuevoUsuario["poblacion"] = $_REQUEST["poblacion"];
 		$nuevoUsuario["codigoPostal"] = $_REQUEST["codigoPostal"];
-		$nuevoUsuario["perfil"] = $_REQUEST["perfil"];
+		$formulario["categoria"] = $_REQUEST["categoria"];
 		$nuevoUsuario["fechaNacimiento"] = $_REQUEST["fechaNacimiento"];
 		$nuevoUsuario["email"] = $_REQUEST["email"];
 		
@@ -26,16 +27,12 @@
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: registro_usuario.php');
-	} else
-		if ($nuevoUsuario["perfil"] == "Cliente"){
-			Header('Location: alta_cliente.php');
-		} else {
-			Header('Location: alta_empleado.php');
-		}
+	} else {
+		Header('Location: alta_empleado.php');
+	}
 
 		
-	// Validación en servidor del formulario de alta de usuario
-	
+	// Validación en servidor del formulario
 	
 	function validarDatosUsuario($nuevoUsuario){
 				
@@ -61,6 +58,7 @@
 		//Validacion fecha vacia
 		if ($nuevoUsuario["fechaNacimiento"] == ""){
 			$errores[] = "<p>La fecha de nacimiento no puede estar vacía</p>";
+			
 		//Validacion mayor de edad
 		} else {
 			$mayor = 18;
