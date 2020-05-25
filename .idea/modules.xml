@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../ProyectoBarBlancaPaloma/.idea/ProyectoBarBlancaPaloma.iml" filepath="$PROJECT_DIR$/../ProyectoBarBlancaPaloma/.idea/ProyectoBarBlancaPaloma.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../IISSI/p6help/.idea/p6help.iml" filepath="$PROJECT_DIR$/../IISSI/p6help/.idea/p6help.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/proyecto_bar_pruebas.iml" filepath="$PROJECT_DIR$/.idea/proyecto_bar_pruebas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pruebas/.idea/pruebas.iml" filepath="$PROJECT_DIR$/../pruebas/.idea/pruebas.iml" />
       <module fileurl="file://$PROJECT_DIR$/../untitled/.idea/untitled.iml" filepath="$PROJECT_DIR$/../untitled/.idea/untitled.iml" />
       <module fileurl="file://$PROJECT_DIR$/../webalizer/.idea/webalizer.iml" filepath="$PROJECT_DIR$/../webalizer/.idea/webalizer.iml" />
     </modules>

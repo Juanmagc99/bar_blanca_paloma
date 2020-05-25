@@ -12,10 +12,25 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -36,20 +51,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="oracle" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../IISSI/p6help" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pruebas" />
       <recent name="C:\xampp\htdocs\ProyectoBarBlancaPaloma" />
     </key>
   </component>
@@ -68,7 +87,27 @@
       <workItem from="1587750439297" duration="2170000" />
       <workItem from="1587752634537" duration="587000" />
       <workItem from="1587754501208" duration="598000" />
-      <workItem from="1587812414947" duration="13346000" />
+      <workItem from="1587812414947" duration="14355000" />
+      <workItem from="1587847858401" duration="6124000" />
+      <workItem from="1587988406608" duration="1712000" />
+      <workItem from="1587995842141" duration="1285000" />
+      <workItem from="1588005795431" duration="600000" />
+      <workItem from="1588692974100" duration="7556000" />
+      <workItem from="1588783549317" duration="1283000" />
+      <workItem from="1589713172847" duration="608000" />
+      <workItem from="1589728520765" duration="9293000" />
+      <workItem from="1589748646156" duration="1097000" />
+      <workItem from="1589796450604" duration="2187000" />
+      <workItem from="1589887893482" duration="1998000" />
+      <workItem from="1590150130840" duration="3973000" />
+      <workItem from="1590168096290" duration="7314000" />
+      <workItem from="1590311042587" duration="4035000" />
+      <workItem from="1590322527453" duration="853000" />
+      <workItem from="1590323460131" duration="509000" />
+      <workItem from="1590324187445" duration="10077000" />
+      <workItem from="1590394140785" duration="7088000" />
+      <workItem from="1590410508912" duration="5102000" />
+      <workItem from="1590422584935" duration="6490000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
@@ -96,14 +135,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="84" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1587735529160" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590394219891">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590394219891" />
+    <state x="1113" y="332" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589713365361">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1113" y="332" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589713365361" />
     <state x="508" y="71" width="749" height="888" key="CommitChangelistDialog2" timestamp="1587752604907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="508" y="71" width="749" height="888" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587752604907" />
-    <state x="847" y="448" key="FileChooserDialogImpl" timestamp="1587752616241">
+    <state x="847" y="448" key="FileChooserDialogImpl" timestamp="1590394461618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="847" y="448" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587752616241" />
+    <state x="847" y="448" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590394461618" />
     <state x="782" y="435" key="Github.CreateGistDialog" timestamp="1587750913988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -112,9 +159,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="985" y="628" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587751692771" />
-    <state x="680" y="72" key="SettingsEditor" timestamp="1587814424407">
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1590394226336">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="680" y="72" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587814424407" />
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1590394226336" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1590395135436">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590395135436" />
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor" timestamp="1590311871782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590311871782" />
+    <state x="927" y="241" key="run.anything.popup" timestamp="1587995782140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
   </component>
 </project>
