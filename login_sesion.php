@@ -47,14 +47,14 @@
 
 <?php if (isset($login)) {
 		echo "<div class=\"error\">";
-		echo "No existe ningun cliente con los datos introducidos";
+		echo "No existe ningun empleado con los datos introducidos";
 		echo "</div>";
 	}	
 	?>
-
+	</br>
 	<form action="login_sesion.php" method="post">
-		<input id="user" name="user" type="text" placeholder="NIF..." required/>	</br></br>
-		<input id="password" name="password" type="password" placeholder="Password..." required/>
+		<input id="nif" name="nif" type="text" placeholder="NIF..." required/>	</br></br>
+		<input id="pass" name="pass" type="password" placeholder="Password..." required/>
     	</br></br>
 		<input type="submit" name="submit" value="submit">
 	</form>

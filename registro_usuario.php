@@ -9,7 +9,7 @@
 		$formulario['tlfn'] = "";
 		$formulario['poblacion'] = "";
 		$formulario['codigoPostal'] = "";
-		$formulario['categoria'] = "";
+		$formulario['categoria'] = "CAMARERO";
 		$formulario['fechaNacimiento'] = "";
 		$formulario['email'] = "";
 		
@@ -53,7 +53,7 @@
 		<fieldset><legend>Datos personales</legend>
 			
 			<div></div><label for="nif">NIF:</label>
-			<input id="nif" name="nif" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formulario['nif'];?>" required>
+			<input id="nif" name="nif" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" value="<?php echo $formulario['nif'];?>" required>
 			</div>
 			
 			<div><label for="nombre">Nombre:</label>
@@ -84,21 +84,21 @@
 					<option value="GR">Granada</option>
 					<option value="OT">Otra</option>
 				</datalist>
-				</div>
+			</div>
 			
 			<div><label for="codigoPostal">Código Postal:</label>
 			<input id="codigoPostal" name="codigoPostal" type="text" size="80" value="<?php echo $formulario["codigoPostal"];?>" required/>
 			</div>
 			
-			<div><label>Categoría:</label>
+			<div><label for="categoria">Categoría:</label>
 			<label>
-				<input name="categoria" type="radio" value="Gerente" <?php if($formulario['categoria']=='Gerente') echo ' checked ';?>/>
+				<input name="categoria" type="radio" value="GERENTE" <?php if($formulario['categoria']=='GERENTE') echo ' checked ';?>/>
 				Gerente</label>
 			<label>
-				<input name="categoria" type="radio" value="Camarero" <?php if($formulario['categoria']=='Camarero') echo ' checked ';?>/>
+				<input name="categoria" type="radio" value="CAMARERO" <?php if($formulario['categoria']=='CAMARERO') echo ' checked ';?>/>
 				Camarero</label>
 			<label>
-				<input name="categoria" type="radio" value="Cocinero" <?php if($formulario['categoria']=='Cocinero') echo ' checked ';?>/>
+				<input name="categoria" type="radio" value="COCINERO" <?php if($formulario['categoria']=='COCINERO') echo ' checked ';?>/>
 				Cocinero</label>
 			</div>
 		

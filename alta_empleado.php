@@ -4,9 +4,10 @@
 	require_once("gestionBD.php");
 	require_once("gestion_empleados.php");
 	
-	$fecha = date('d-m-Y');
-	$fechaHoy = date('d/m/Y', strtotime($fecha));
-	$fechaBaja = "---";
+	$fechaHoy = date('d-m-Y');
+ 	$fechaHoyFormateada = date('d/m/Y', strtotime($fechaHoy));
+	$fechaBaja = date('d-m-Y',strtotime($fechaHoy . "+ 6 month"));
+	$fechaBajaFormateada = date('d/m/Y', strtotime($fechaBaja));
 	
 	if (isset($_SESSION["formulario"])) {
 		$nuevoUsuario = $_SESSION["formulario"];
@@ -24,7 +25,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Bar Balnca Paloma: Alta de empleado realizada con éxito</title>
+  <title>Bar Blanca Paloma: Alta de empleado realizada con éxito</title>
 </head>
 
 <body>
@@ -33,11 +34,11 @@
 	?>
 
 	<main>
-		<?php 	
+		<?php 
 			if (alta_empleado($conexion, $nuevoUsuario)) {  //Si la funcion alta_usuario devuelve TRUE 
-				$SESSION['login'] = $nuevoUsuario['nif'];	//entonces el login de la sesion de ese empleado sera con el NIF
+				$SESSION['login'] = $nuevoUsuario['nif'];	//entonces el login de la sesion de ese empleado será con el NIF
 		?>
-			<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, has sido dado de alta en nuestra página exitosamente con los siguientes datos:</h1>
+			<p>Hola <?php echo $nuevoUsuario["nombre"]; ?>, has sido dado de alta en nuestra página correctamente con los siguientes datos:</p>
 			<ul>
 				<li><?php echo "NIF: " . $nuevoUsuario["nif"]; ?></li>
 				<li><?php echo "Nombre: " . $nuevoUsuario["nombre"]; ?></li>
@@ -45,16 +46,16 @@
 				<li><?php echo "Teléfono: " . $nuevoUsuario["tlfn"]; ?></li>
 				<li><?php echo "Población: " . $nuevoUsuario["poblacion"]; ?></li>
 				<li><?php echo "CodigoPostal: " . $nuevoUsuario["codigoPostal"]; ?></li>
-				<li><?php echo "Fecha de alta: " . $fechaHoy; ?></li>
-				<li><?php echo "Fecha de baja: " . $fechaBaja; ?></li>
-				<li><?php echo "Categoría: " . $nuevoUsuario["categoria"]; ?></li>
+				<li><?php echo "Fecha de alta: " . $fechaHoyFormateada; ?></li>
+				<li><?php echo "Fecha de baja: " . $fechaBajaFormateada; ?></li>
+				<li><?php echo "Categoria: " . $nuevoUsuario["categoria"]; ?></li>
 			</ul>
 			<div >	
 				Pulsa <a href="menu.html">aquí</a> para acceder a la pagina del bar.
 			</div>
 		<?php } else { ?>
-			<h1>Ya hay un empleado con esos datos.</h1>
-			<div >	
+			<p>Ya hay un empleado con esos datos.</p>
+			<div>	
 				Pulsa <a href="registro_usuario.php">aquí</a> para volver al formulario de registro.
 			</div>
 		<?php } ?>

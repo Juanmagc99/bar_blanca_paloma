@@ -10,7 +10,7 @@
 		$nuevoUsuario["tlfn"] = $_REQUEST["tlfn"];
 		$nuevoUsuario["poblacion"] = $_REQUEST["poblacion"];
 		$nuevoUsuario["codigoPostal"] = $_REQUEST["codigoPostal"];
-		$formulario["categoria"] = $_REQUEST["categoria"];
+		$nuevoUsuario["categoria"] = $_REQUEST["categoria"];
 		$nuevoUsuario["fechaNacimiento"] = $_REQUEST["fechaNacimiento"];
 		$nuevoUsuario["email"] = $_REQUEST["email"];
 		
