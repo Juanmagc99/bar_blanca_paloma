@@ -4,8 +4,15 @@ require_once("gestionBD.php");
 $conexion = crearConexionBD();
 $mesas_interiores = $conexion->query("SELECT * FROM MESA WHERE TIPO_MESA = 'INTERIOR' ");
 $mesas_exteriores = $conexion->query("SELECT * FROM MESA WHERE TIPO_MESA = 'EXTERIOR' ");
-$reservas1 = $conexion->query("SELECT ID_MESA1, HORAENTRADA_RESERVA,HORASALIDA_RESERVA FROM RESERVA");
-$reservas2 = $reservas1;
+$reservas= $conexion->query("SELECT ID_MESA1, TO_CHAR( HORAENTRADA_RESERVA, 'YYYY-MM-DD HH24:MI:SS' ) AS HORA_ENTRADA
+,TO_CHAR( HORASALIDA_RESERVA, 'YYYY-MM-DD HH24:MI' ) AS HORA_SALIDA FROM RESERVA");
+
+
+$contendor = array();
+$ahora = date('Y-m-d H:i');
+foreach($reservas as $row) {
+    array_push($contendor, $row);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +26,10 @@ $reservas2 = $reservas1;
     include_once("Header.html");
     ?>
 </div>
+
+
+
+
 <div class="seleccion_mesas">
     <button class="boton_mesa" onclick="openMesa(event, 'INTERIOR') " id="default">
         INTERIOR
@@ -37,12 +48,16 @@ $reservas2 = $reservas1;
         <?php foreach ($mesas_interiores as $mesa) { ?>
             <tr>
                 <td><?php echo $mesa["ID_MESA"] ?></td>
-                <td><?php foreach ($reservas1 as $res){
-                        if (strcmp($res["ID_MESA1"],$mesa["ID_MESA"]) == 0){
-                            echo $res["HORAENTRADA_RESERVA"];
+                <td><?php foreach ($contendor as $res){
+                        $fecha_entrada = $res["HORA_ENTRADA"];
+                        $fecha_salida = $res["HORA_SALIDA"];
+                        $estado_mesa = "DISPONIBLE";
+                        if (strcmp($res["ID_MESA1"],$mesa["ID_MESA"]) == 0 && ($fecha_entrada > $ahora &&
+                                $fecha_salida < $ahora)){
+                            $estado_mesa = "OCUPADO";
                         }
                     }
-                    $reservas1 = reset($reservas1);
+                    echo $estado_mesa;
                     ?></td>
                 <td><button>EDIT</button></td>
                 <td><button>FACTURA</button></td>
@@ -61,11 +76,16 @@ $reservas2 = $reservas1;
         <?php foreach ($mesas_exteriores as $mesa) { ?>
             <tr>
                 <td><?php echo $mesa["ID_MESA"] ?></td>
-                <td><?php foreach ($reservas2 as $res){
-                        if (strcmp($res["ID_MESA1"],$mesa["ID_MESA"]) == 0){
-                            echo $res["HORAENTRADA_RESERVA"];
+                <td><?php foreach ($contendor as $res){
+                    $fecha_entrada = $res["HORA_ENTRADA"];
+                    $fecha_salida = $res["HORA_SALIDA"];
+                    $estado_mesa = "DISPONIBLE";
+                    if (strcmp($res["ID_MESA1"],$mesa["ID_MESA"]) == 0 && ($fecha_entrada > $ahora &&
+                        $fecha_salida < $ahora)){
+                           $estado_mesa = "OCUPADO";
                         }
                     }
+                    echo $estado_mesa;
                     ?></td>
                 <td><button>EDIT</button></td>
                 <td><button>FACTURA</button></td>
@@ -80,7 +100,13 @@ print_r(date('Y-m-d
 H:i'));
 ?>
 
-
+<?php foreach ($contendor as $res){
+        $fecha = $res["HORA_ENTRADA"];
+       if(date('Y-m-d H:i') < $fecha){
+           echo "hola";
+       }
+    }
+    ?>
 
 <script>
     function openMesa(evt, tablaMesa) {
