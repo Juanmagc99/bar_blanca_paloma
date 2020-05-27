@@ -4,13 +4,6 @@ require_once("gestionBD.php");
 $conexion = crearConexionBD();
 $reservas= $conexion->query("SELECT ID_RESERVA, TO_CHAR( HORAENTRADA_RESERVA, 'YYYY-MM-DD HH24:MI:SS' ) AS HORA_ENTRADA
 ,TO_CHAR( HORASALIDA_RESERVA, 'YYYY-MM-DD HH24:MI' ) AS HORA_SALIDA, ID_CLIENTE1, ID_MESA1 FROM RESERVA");
-
-
-$contendor = array();
-$ahora = date('Y-m-d H:i');
-foreach($reservas as $row) {
-    array_push($contendor, $row);
-}
 ?>
 
 <!DOCTYPE html>
