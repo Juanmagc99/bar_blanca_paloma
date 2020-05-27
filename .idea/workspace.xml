@@ -54,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,6 +66,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma" />
       <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma\css" />
       <recent name="C:\xampp\htdocs\pruebas" />
       <recent name="C:\xampp\htdocs\ProyectoBarBlancaPaloma" />
@@ -107,7 +108,8 @@
       <workItem from="1590394140785" duration="7088000" />
       <workItem from="1590410508912" duration="5102000" />
       <workItem from="1590422584935" duration="6490000" />
-      <workItem from="1590513872631" duration="10651000" />
+      <workItem from="1590513872631" duration="11959000" />
+      <workItem from="1590589577929" duration="7857000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
