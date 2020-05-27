@@ -1,0 +1,63 @@
+body {
+    background-color: #0F398C;
+}
+
+.boton_productos {
+    background-color: gray;
+    color: black;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    width: 10%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Fira Code";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.muestra_productos {
+    padding-top: 45px;
+}
+
+.boton_productos:hover {
+    background-color: rgba(72,76,79,0.92);
+}
+
+.boton_productos.active {
+    background-color: rgba(72,76,79,0.92);
+}
+
+.tabla_productos th,td {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-collapse: collapse;
+}
+
+.tabla_productos {
+    padding-left: 40%;
+    width: 60%;
+}
+
+.tabla_productos th {
+    background-color: #757575;
+}
+
+.tabla_productos td {
+    background-color: #A8A8A8;
+}
+
+td, button{
+    background-color: gray;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Fira Code";
+    font-size: 15px;
+    width: 100%;
+}
+
+td, button:hover {
+    background-color: rgba(72,76,79,0.92);
+}
