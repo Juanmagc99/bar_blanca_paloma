@@ -1,3 +1,25 @@
+<?php
+	session_start();
+
+	require_once("gestionBD.php");
+	require_once("gestionProductos.php");
+	
+	if (isset($_SESSION["producto"])){
+		$producto = $_SESSION["producto"];
+		unset($_SESSION["producto"]);
+	}
+
+	$conexion = crearConexionBD();
+	$filas = consultarProductos($conexion);
+	cerrarConexionBD($conexion);
+	
+	
+	$productos = array();
+	foreach ($filas as $fila) {
+		array_push($productos, $fila);
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +34,20 @@
         ?>
 </div>
 	
-<div class=divHome>
-    <table class=tableHome>
+<div class="divHome">
+    <table class="tableHome">
     <tr>
-    	<th class=home><a class=enlaceHome href="menu.html">Home</a></button>
+    	<th class="home"><a class="enlaceHome" href="menu.html">Home</a></button>
     </table>
 </div>
 
-<div class=adminPaginas>
-	<table class=tablaEnlaces>
+<div class="adminPaginas">
+	<table class="tablaEnlaces">
 	<tr>
-		<th class=botonCarta><a class=enlace href="adminCarta.php">Gestión Carta</a></th>
-		<th class=boton><a class=enlace href="adminMesas.php">Gestión Mes</a></th>
-		<th class=boton><a class=enlace href="adminEmpleados.php">Empleados</a></th>
-		<th class=boton><a class=enlace href="adminEstadisticas.php">Estadisticas</a></th>
+		<th class="botonCarta"><a class="enlace" href="adminCarta.php">Gestión Carta</a></th>
+		<th class="boton"><a class="enlace" href="adminMesas.php">Gestión Mes</a></th>
+		<th class="boton"><a class="enlace" href="adminEmpleados.php">Empleados</a></th>
+		<th class="boton"><a class="enlace" href="adminEstadisticas.php">Estadisticas</a></th>
 	</tr>
     </table>
 </div>
@@ -40,163 +62,268 @@
 </div>
 
 <div id="Medias" class="tabcontent">
-  <table class=tablaCarta>
+  <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-        <th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+        <th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
-    
+    <?php foreach ($productos as $media){
+    	 		if($media["DESCRIPCION"] == 'Media') { ?>
 	<tr>
-		<td class=celdaNombre>xd</td>
-    	<td class=celdaPrecio>xddd</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td> 
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $media["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $media["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $media["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $media["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $media["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $media["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $media["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio""><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $media["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $media["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $media["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $media["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $media["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
-    
-    <tr>
-		<td class=celdaNombre>Prueba para ver si el tab se agranda </td>
-    	<td class=celdaPrecio>cuando añado fila a la tabla</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
-	</tr>
-    
-    <tr>
-		<td class=celdaNombre>Viva</td>
-    	<td class=celdaPrecio>España</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
-	</tr>
-  
+       <?php
+        }
+        }
+        ?>
   </table>
-  
-  <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
-  </table>
-  
 </div>
 
 <div id="Combinados" class="tabcontent">
-   <table class=tablaCarta>
+   <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-    	<th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+    	<th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
+	<?php foreach ($productos as $combinado) { if($combinado["DESCRIPCION"] == 'Combinado') { ?>
 	<tr>
-		<td class=celdaNombre>hola</td>
-    	<td class=celdaPrecio>paris</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $combinado["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $combinado["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $combinado["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $combinado["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $combinado["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $combinado["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $combinado["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $combinado["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $combinado["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $combinado["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $combinado["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $combinado["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
-    </table>
-    
-    <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
+       <?php
+        }
+        }
+        ?>
   </table>
-  
 </div>
 
 <div id="Carnes" class="tabcontent">
-   <table class=tablaCarta>
+   <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-    	<th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+    	<th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
+	<?php foreach ($productos as $carne){ if($carne["DESCRIPCION"] == 'Carne') { ?>
 	<tr>
-		<td class=celdaNombre>hola</td>
-    	<td class=celdaPrecio>tokio</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $carne["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $carne["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $carne["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $carne["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $carne["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $carne["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $carne["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $carne["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $carne["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $carne["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $carne["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $carne["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
-    </table>
-    
-    <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
+       <?php
+        }
+        }
+        ?>
   </table>
-  
 </div>
 
 <div id="Pescados" class="tabcontent">
-   <table class=tablaCarta>
+   <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-    	<th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+    	<th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
+	<?php foreach ($productos as $pescado){ if($pescado["DESCRIPCION"] == 'Pescado') { ?>
 	<tr>
-		<td class=celdaNombre>hola</td>
-    	<td class=celdaPrecio>asdfghjkl</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $pescado["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $pescado["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $pescado["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $pescado["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $pescado["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $pescado["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $pescado["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $pescado["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $pescado["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $pescado["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $pescado["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $pescado["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
+       <?php
+        }
+        }
+        ?>
     </table>
-    
-    <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
-  </table>
-  
 </div>
 
 <div id="Bebidas" class="tabcontent">
-   <table class=tablaCarta>
+   <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-    	<th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+    	<th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
+	<?php foreach ($productos as $bebida){ if($bebida["DESCRIPCION"] == 'Bebida') { ?>
 	<tr>
-		<td class=celdaNombre>hola</td>
-    	<td class=celdaPrecio>5678</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $bebida["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $bebida["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $bebida["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $bebida["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $bebida["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $bebida["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $bebida["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $bebida["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $bebida["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $bebida["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $bebida["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $bebida["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
+       <?php
+        }
+        }
+        ?>
     </table>
-    
-    <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
-  </table>
-  
 </div>
 
 <div id="Postres" class="tabcontent">
-   <table class=tablaCarta>
+   <table class="tablaCarta">
 	<tr>
-		<th class=celdaNombre1>Nombre</th>
-    	<th class=celdaPrecio1>Precio</th>
-    	<th class=blanco></th>
-        <th class=blanco1></th>
+		<th class="celdaNombre1">Nombre</th>
+    	<th class="celdaPrecio1">Precio</th>
+    	<th class="blanco"></th>
+        <th class="blanco1"></th>
 	</tr>
+	<?php foreach ($productos as $postre){ if($postre["DESCRIPCION"] == 'Postre') { ?>
 	<tr>
-		<td class=celdaNombre>hola</td>
-    	<td class=celdaPrecio>1234</td>
-        <td class=edit><button type="submit" class=botonEditar>Edit</button></td>
-        <td class=delete><button type="reset" class=botonDelete>Delete</button></td>
+		<form method="post" action="controlador_productos.php">
+			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $postre["ID_PRODUCTO"]; ?>" />
+			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $postre["NOMBRE_PRODUCTO1"]; ?>" />
+			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $postre["PRECIO_PRODUCTO"]; ?>" />
+			<input id="DESCRIPCION" name="DESCRIPCION" type="hidden" value="<?php echo $postre["DESCRIPCION"]; ?>" /> 
+			<input id="CANTIDAD" name="CANTIDAD" type="hidden" value="<?php echo $postre["CANTIDAD"]; ?>" />
+			
+			<?php 
+			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $postre["NOMBRE_PRODUCTO1"])) { ?>
+			<td class="celdaNombre"><?php echo $postre["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $postre["PRECIO_PRODUCTO"] ?>"/></td>
+    		<?php }	else { ?>
+    		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $postre["PRECIO_PRODUCTO"]; ?>"/>
+    		<td class="celdaNombre"><?php echo $postre["NOMBRE_PRODUCTO1"] ?></td>
+    		<td class="celdaPrecio"><?php echo $postre["PRECIO_PRODUCTO"] ?></td>
+    		<?php } ?>
+    		
+        	<td class="edit">
+        		<?php if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $postre["NOMBRE_PRODUCTO1"])) { ?>
+        			<button type="submit" id="grabar" name="grabar" class="botonEditar">OK</button>
+        		<?php } else {?>
+        			<button type="submit" id="editar" name="editar" class="botonEditar">Edit</button></td>
+        		<?php } ?>
+        	<td class="delete">
+        		<button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td> 
+		</form>
 	</tr>
+       <?php
+        }
+        }
+        ?>
     </table>
-    
-    <table class=tableAdd>
-   <tr>
-   		<td class=add><button class=botonAdd>+</button></td>
-	</tr>
-  </table>
-  
 </div>
 
 

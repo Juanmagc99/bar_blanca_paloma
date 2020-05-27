@@ -70,7 +70,7 @@
 			
 			<div>
 				<label for="poblacion">Poblacion:</label>
-				<input list="opcionesPoblacion" name="poblacion" id="poblacion" 
+				<input list="opcionesPoblacion" name="poblacion" id="poblacion" placeholder="Click dos veces..."
 					value="<?php if ($formulario['poblacion'] != "") echo $formulario['poblacion'];?>" 
 					required/>
 				<datalist id="opcionesPoblacion">
