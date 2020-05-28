@@ -19,11 +19,12 @@
 		Header('Location: clientes.php');
 	} else {
 		require_once("gestionBD.php");
-		$_SESSION["formulario_cliente"] = null;
-		$_SESSION["errores"] = null;
 
 		$conexion = crearConexionBD();
-		add_cliente($conexion, $nuevoCliente);
+        if (add_cliente($conexion, $nuevoCliente)) {
+            $_SESSION["formulario_cliente"] = null;
+            $_SESSION["errores_cliente"] = null;
+        }
 		cerrarConexionBD($conexion);
 		Header('Location: clientes.php');
 	}

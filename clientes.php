@@ -38,7 +38,7 @@ else Header("Location: login_sesion.php");
 </div>
 
 <?php
-// Mostrar los erroes de validación (Si los hay)
+// Mostrar los errores de validación (Si los hay)
 if (isset($errores_cliente) && count($errores_cliente)>0) {
     echo "<div id=\"div_errores\" class=\"error\">";
     echo "<h4> Ha cometido errores al realizar el formulario:</h4>";
@@ -54,10 +54,6 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
             <th>TLF_CLIENTE</th>
             <th>NOMBRE_CLIENTE</th>
             <th>APELLIDOS_CLIENTE</th>
-            <?php if ($login["categoria"] == "GERENTE")  { ?>
-                <th></th>
-                <?php
-            } ?>
         </tr>
 
         <?php foreach ($clientes as $cliente) { ?>
@@ -68,13 +64,14 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
                 <td><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
                 <?php if ($login["categoria"] == "GERENTE")  { ?>
                     <td><button>EDIT</button></td>
+                    <td><button>BORRAR</button></td>
                 <?php
                 } ?>
             </tr>
             <?php
         } ?>
         <?php if ($login["categoria"] == "GERENTE")  { ?>
-            <form id="addCliente" method="get" action="validacion_add_cliente.php" novalidate>
+            <form id="addCliente" method="get" action="gestionClientes.php" novalidate>
                 <tr>
                 <td></td>
                 <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['TLF_CLIENTE']?>" required/></td>
