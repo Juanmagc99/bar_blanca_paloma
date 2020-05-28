@@ -3,9 +3,9 @@ session_start();
 
 require_once("gestionBD.php");
 
-if (isset($_SESSION["formulario"])) {
-    $nuevoUsuario = $_SESSION["formulario"];
-    $_SESSION["formulario"] = null;
+if (isset($_SESSION["formulario_cliente"])) {
+    $nuevoUsuario = $_SESSION["formulario_cliente"];
+    $_SESSION["formulario_cliente"] = null;
     $_SESSION["errores"] = null;
 }
 else

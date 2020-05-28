@@ -6,19 +6,21 @@ $clientes = $conexion->query("SELECT ID_CLIENTE, TLF_CLIENTE, NOMBRE_CLIENTE, AP
 
 session_start();
 
-if (!isset($_SESSION['formulario'])) {
+if (!isset($_SESSION['formulario_cliente'])) {
 
-    $formulario['TLF_CLIENTE'] = "";
-    $formulario['NOMBRE_CLIENTE'] = "";
-    $formulario['APELLIDOS_CLIENTE'] = "";
+    $formulario_cliente['TLF_CLIENTE'] = "";
+    $formulario_cliente['NOMBRE_CLIENTE'] = "";
+    $formulario_cliente['APELLIDOS_CLIENTE'] = "";
 
-    $_SESSION['formulario'] = $formulario;
+    $_SESSION['formulario_cliente'] = $formulario_cliente;
 }
 else
-    $formulario = $_SESSION['formulario'];
+    $formulario_cliente = $_SESSION['formulario_cliente'];
 
 if (isset($_SESSION["errores"]))
     $errores = $_SESSION["errores"];
+if (isset($_SESSION["login"]))
+    $login = $_SESSION["login"];
 ?>
 
 <!DOCTYPE html>
@@ -59,17 +61,21 @@ if (isset($errores) && count($errores)>0) {
                 <td><?php echo $cliente["TLF_CLIENTE"] ?></td>
                 <td><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
                 <td><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
-                <td><button>EDIT</button></td>
+                <?php if ($login["categoria"] == "GERENTE")  {
+                    echo '<td><button>EDIT</button></td>';
+                } ?>
             </tr
             <?php
         } ?>
-        <form id="addCliente" method="get" action="validacion_add_cliente.php" novalidate>
+        <?php if ($login["categoria"] == "GERENTE")  {
+        echo '<form id="addCliente" method="get" action="validacion_add_cliente.php" novalidate>
             <td></td>
-            <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $formulario['TLF_CLIENTE'];?>" required/></td>
-            <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $formulario['NOMBRE_CLIENTE'];?>" required/></td>
-            <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $formulario['APELLIDOS_CLIENTE'];?>" required/></td>
+            <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="' . $formulario_cliente['TLF_CLIENTE'] . '" required/></td>
+            <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="' . $formulario_cliente['NOMBRE_CLIENTE'] . '" required/></td>
+            <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="' . $formulario_cliente['APELLIDOS_CLIENTE'] . '" required/></td>
             <td><input type="submit" value="ADD" /></td>
-        </form>
+         </form>';
+         } ?>
     </table>
 </div>
 </body>
