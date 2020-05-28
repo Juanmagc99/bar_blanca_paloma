@@ -18,7 +18,7 @@ else
     $formulario_cliente = $_SESSION['formulario_cliente'];
 
 if (isset($_SESSION["errores_cliente"]))
-    $errores = $_SESSION["errores_cliente"];
+    $errores_cliente = $_SESSION["errores_cliente"];
 if (isset($_SESSION["login"]))
     $login = $_SESSION["login"];
 else Header("Location: login_sesion.php");

@@ -18,9 +18,15 @@
 		$_SESSION["errores_cliente"] = $errores_cliente;
 		Header('Location: clientes.php');
 	} else {
-		Header('Location: gestion_cliente.php');
-	}
+		require_once("gestionBD.php");
+		$_SESSION["formulario_cliente"] = null;
+		$_SESSION["errores"] = null;
 
+		$conexion = crearConexionBD();
+		add_cliente($conexion, $nuevoCliente);
+		cerrarConexionBD($conexion);
+		Header('Location: clientes.php');
+	}
 		
 	// Validación en servidor del formulario
 	function validarDatosUsuario($nuevoCliente){
@@ -30,5 +36,25 @@
 		}
 		return $errores_cliente;
 	}
-?>
 
+	//Añadir a la base de datos
+	function add_cliente($conexion,$cliente)
+	{
+		try {
+			$consulta = "CALL ADD_CLIENTE(:TLF_CLIENTE, :NOMBRE_CLIENTE, :APELLIDOS_CLIENTE)";
+			$stmt = $conexion->prepare($consulta);
+
+			$stmt->bindParam(':TLF_CLIENTE', $cliente["TLF_CLIENTE"]);
+			$stmt->bindParam(':NOMBRE_CLIENTE', $cliente["NOMBRE_CLIENTE"]);
+			$stmt->bindParam(':APELLIDOS_CLIENTE', $cliente["APELLIDOS_CLIENTE"]);
+
+			$stmt->execute();
+
+			return true;
+
+		}
+		catch (PDOException $e) {
+			return false;
+		}
+	}
+?>
