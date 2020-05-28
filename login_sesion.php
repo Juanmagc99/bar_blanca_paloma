@@ -13,12 +13,15 @@
 		
 	$conexion = crearConexionBD();
 	$empleados = consultarEmpleado($conexion, $nif, $pass);
+	$categoria = consultarCategoriaEmpleado($conexion, $nif, $pass);
 	cerrarConexionBD($conexion);
 	
 	if ($empleados == 0){
 		$login = "error";
 	} else {
-		$_SESSION["login"] = $nif;
+	    $usuario["nif"] = $nif;
+        $usuario["categoria"] = $categoria;
+		$_SESSION["login"] = $usuario;
 		header("Location: menu.html");
 	}
 }
@@ -42,8 +45,6 @@
 <div class=centrado>
 	
 <h1>Bar Blanca Paloma</h1>
-
-<main>
 
 <?php if (isset($login)) {
 		echo "<div class=\"error\">";

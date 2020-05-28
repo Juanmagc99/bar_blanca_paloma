@@ -44,5 +44,13 @@ function consultarEmpleado($conexion,$nif,$pass) {
 	$stmt->bindParam(':hashContraseña',$pass);
 	$stmt->execute();
 	return $stmt->fetchColumn();
-	
+}
+
+function consultarCategoriaEmpleado($conexion,$nif,$pass) {
+    $consulta = "SELECT categoria FROM EMPLEADO WHERE DNI=:nif AND HASHCONTRASEÑA=:hashContraseña";
+    $stmt = $conexion->prepare($consulta);
+    $stmt->bindParam(':nif',$nif);
+    $stmt->bindParam(':hashContraseña',$pass);
+    $stmt->execute();
+    return $stmt->fetchColumn();
 }
