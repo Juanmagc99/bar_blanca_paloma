@@ -10,12 +10,12 @@
 	else 
 		Header("Location: clientes.php");
 
-	$_SESSION["formulario"] = $nuevoCliente;
+	$_SESSION["formulario_cliente"] = $nuevoCliente;
 
  
-	$errores = validarDatosUsuario($nuevoCliente);
-	if (count($errores)>0) {
-		$_SESSION["errores"] = $errores;
+	$errores_cliente = validarDatosUsuario($nuevoCliente);
+	if (count($errores_cliente)>0) {
+		$_SESSION["errores_cliente"] = $errores_cliente;
 		Header('Location: clientes.php');
 	} else {
 		Header('Location: gestion_cliente.php');
@@ -26,9 +26,9 @@
 	function validarDatosUsuario($nuevoCliente){
 		//Validacion tlfn 9 digitos
 		if(!preg_match("/^[0-9]{9}$/", $nuevoCliente["TLF_CLIENTE"])){
-			$errores[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
+			$errores_cliente[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
 		}
-		return $errores;
+		return $errores_cliente;
 	}
 ?>
 

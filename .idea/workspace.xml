@@ -179,4 +179,14 @@
     </state>
     <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/gestionBD.php</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
