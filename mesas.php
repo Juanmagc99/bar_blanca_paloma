@@ -1,12 +1,22 @@
 <?php
+session_start();
 require_once("gestionBD.php");
-
+require_once("gestionMesas.php");
 $conexion = crearConexionBD();
-$mesas_interiores = $conexion->query("SELECT * FROM MESA WHERE TIPO_MESA = 'INTERIOR' ");
-$mesas_exteriores = $conexion->query("SELECT * FROM MESA WHERE TIPO_MESA = 'EXTERIOR' ");
+
+if (isset($_SESSION["login"])){
+    $usuario = $_SESSION["login"];
+} else {
+    Header("Location: login_sesion.php");
+}
+
+$mesas_interiores = consultarMesasInterior($conexion);
+$mesas_exteriores = consultarMesasExterior($conexion);
+
 $reservas= $conexion->query("SELECT ID_MESA1, TO_CHAR( HORAENTRADA_RESERVA, 'YYYY-MM-DD HH24:MI:SS' ) AS HORA_ENTRADA
 ,TO_CHAR( HORASALIDA_RESERVA, 'YYYY-MM-DD HH24:MI' ) AS HORA_SALIDA FROM RESERVA");
 
+cerrarConexionBD($conexion);
 
 $contendor = array();
 $ahora = date('Y-m-d H:i', strtotime("-1 hours"));
@@ -26,10 +36,6 @@ foreach($reservas as $row) {
     include_once("Header.html");
     ?>
 </div>
-
-
-
-
 <div class="seleccion_mesas">
     <button class="boton_mesa" onclick="openMesa(event, 'INTERIOR') " id="default">
         INTERIOR
@@ -60,6 +66,9 @@ foreach($reservas as $row) {
                     echo $estado_mesa;
                     ?></td>
                 <td><button>FACTURA</button></td>
+                <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
+                    <td><img src="imagenes/flecha.png"></td>
+               <?php }?>
             </tr>
 
             <?php
@@ -87,6 +96,9 @@ foreach($reservas as $row) {
                     echo $estado_mesa;
                     ?></td>
                 <td><button>FACTURA</button></td>
+                <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
+                    <td>&#8592</td>
+                <?php }?>
             </tr>
             <?php
         } ?>
