@@ -9,7 +9,7 @@ $reservas= $conexion->query("SELECT ID_MESA1, TO_CHAR( HORAENTRADA_RESERVA, 'YYY
 
 
 $contendor = array();
-$ahora = date('Y-m-d H:i');
+$ahora = date('Y-m-d H:i', strtotime("-1 hours"));
 foreach($reservas as $row) {
     array_push($contendor, $row);
 }
@@ -59,7 +59,6 @@ foreach($reservas as $row) {
                     }
                     echo $estado_mesa;
                     ?></td>
-                <td><button>EDIT</button></td>
                 <td><button>FACTURA</button></td>
             </tr>
 
@@ -87,27 +86,12 @@ foreach($reservas as $row) {
                     }
                     echo $estado_mesa;
                     ?></td>
-                <td><button>EDIT</button></td>
                 <td><button>FACTURA</button></td>
             </tr>
             <?php
         } ?>
     </table>
 </div>
-<?php
-$hoy = getdate();
-print_r(date('Y-m-d
-H:i'));
-?>
-
-<?php foreach ($contendor as $res){
-        $fecha = $res["HORA_ENTRADA"];
-       if(date('Y-m-d H:i') < $fecha){
-           echo "hola";
-       }
-    }
-    ?>
-
 <script>
     function openMesa(evt, tablaMesa) {
         var i, tab_mesa, boton_mesa;
