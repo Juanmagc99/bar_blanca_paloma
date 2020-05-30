@@ -40,6 +40,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ProyectoBarBlancaPaloma" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMP" />
   <component name="ProjectId" id="1awM2oGcxMeM9YoKk3LO0I57gp2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -112,6 +113,7 @@
       <workItem from="1590513872631" duration="11959000" />
       <workItem from="1590589577929" duration="8044000" />
       <workItem from="1590617023720" duration="4000000" />
+      <workItem from="1590848087352" duration="11438000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
@@ -179,15 +181,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/gestionBD.php</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

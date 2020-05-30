@@ -49,13 +49,14 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
 }
 ?>
 
+<h1>Clientes</h1>
 <div class="muestra_clientes">
     <table class="tabla_clientes">
         <tr>
-            <th>ID_CLIENTE</th>
-            <th>TLF_CLIENTE</th>
-            <th>NOMBRE_CLIENTE</th>
-            <th>APELLIDOS_CLIENTE</th>
+            <th>ID</th>
+            <th>TELÉFONO</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
         </tr>
 
         <?php foreach ($clientes as $cliente) { ?>
@@ -79,11 +80,11 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
                     <?php if ($login["categoria"] == "GERENTE")  { ?>
                         <?php if (!isset($CLIENTE_EDIT)) { ?>
                             <td><button type="submit" id="editar" name="editar" class="botonEdit">Edit</button></td>
+                            <td><button type="submit" id="copiar" name="copiar" class="botonCopy">Copy</button></td>
+                            <td><button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
                         <?php }	else { ?>
                             <td><button type="submit" id="grabar" name="grabar" class="botonGrabar">OK</button></td>
                         <?php } ?>
-                        <td><button type="submit" id="copiar" name="copiar" class="botonCopy">Copy</button></td>
-                        <td><button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
                         <?php
                     } ?>
                 </form>
