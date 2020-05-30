@@ -56,7 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sql" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -71,6 +71,7 @@
       <recent name="C:\xampp\htdocs\proyecto_bar_pruebas\imagenes" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma\sql" />
       <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma" />
       <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma\css" />
       <recent name="C:\xampp\htdocs\pruebas" />

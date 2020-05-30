@@ -4,13 +4,18 @@
 	include_once("gestionBD.php");
 	include_once("gestion_empleados.php");
 	
+	
 	if (isset($_POST["submit"])){
-
-	//lo que piden a los empleados	
 		$nif = $_POST["nif"];
 		$pass = $_POST["pass"];
 		
+		$datos["nif"] = $_POST["nif"];
+		$datos["pass"] = $_POST["pass"];
 		
+	$errores = validarDatos($datos);
+	
+	if($errores == null) {
+			
 	$conexion = crearConexionBD();
 	$empleados = consultarEmpleado($conexion, $nif, $pass);
 	$categoria = consultarCategoriaEmpleado($conexion, $nif, $pass);
@@ -25,7 +30,27 @@
 		header("Location: menu.html");
 	}
 }
+}
+	
+	function validarDatos($datos){
 		
+	$errores = null;
+		
+	if($datos["nif"] == ""){
+		$errores[] = "<p>El nif no puede estar vacio</p>";
+	} else if (!preg_match("/^[0-9]{8}[A-Z]$/", $datos['nif'])){
+			$errores[] = "<p>El nif son 8 números y una letra</p>";
+		}
+	
+	if($datos["pass"] == ""){
+		$errores[] = "<p>La contraseña de acceso no puede estar vacia</p>";
+	}else if(strlen($datos["pass"])<8){
+		$errores [] = "<p>Contraseña no válida: debe tener al menos 8 caracteres</p>";
+	}else if(!preg_match("/[a-z]+/", $datos["pass"]) || !preg_match("/[A-Z]+/", $datos["pass"]) || !preg_match("/[0-9]+/", $datos["pass"])){
+		$errores[] = "<p>Contraseña no válida: debe contener letras mayúsculas, minúsculas y dígitos</p>";
+	}
+		return $errores;
+	}	
 
 ?>
 
@@ -51,10 +76,16 @@
 		echo "No existe ningun empleado con los datos introducidos";
 		echo "</div>";
 	}	
+
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
 	?>
 	</br>
-	<form action="login_sesion.php" method="post">
-		<input id="nif" name="nif" type="text" placeholder="NIF..." required/>	</br></br>
+	<form action="login_sesion.php" method="post" novalidate>
+		<input id="nif" name="nif" type="text" placeholder="NIF..." pattern="^[0-9]{8}[A-Z]" title="8 dígitos y una letra mayúscula" required/> </br></br>
 		<input id="pass" name="pass" type="password" placeholder="Password..." required/>
     	</br></br>
 		<input type="submit" name="submit" value="submit">

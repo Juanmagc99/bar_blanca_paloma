@@ -19,6 +19,8 @@ else
 
 if (isset($_SESSION["errores_cliente"]))
     $errores_cliente = $_SESSION["errores_cliente"];
+if (isset($_SESSION["CLIENTE_EDIT"]))
+    $CLIENTE_EDIT = $_SESSION["CLIENTE_EDIT"];
 if (isset($_SESSION["login"]))
     $login = $_SESSION["login"];
 else Header("Location: login_sesion.php");
@@ -58,15 +60,33 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
 
         <?php foreach ($clientes as $cliente) { ?>
             <tr>
-                <td><?php echo $cliente["ID_CLIENTE"] ?></td>
-                <td><?php echo $cliente["TLF_CLIENTE"] ?></td>
-                <td><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
-                <td><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
-                <?php if ($login["categoria"] == "GERENTE")  { ?>
-                    <td><button>EDIT</button></td>
-                    <td><button>BORRAR</button></td>
-                <?php
-                } ?>
+                <form method="post" action="gestionClientes.php">
+                    <input id="ID_CLIENTE" name="ID_CLIENTE" type="hidden" value="<?php echo $cliente["ID_CLIENTE"]; ?>" />
+                    <input id="TLF_CLIENTE" name="TLF_CLIENTE" type="hidden" value="<?php echo $cliente["TLF_CLIENTE"]; ?>" />
+                    <input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="hidden" value="<?php echo $cliente["NOMBRE_CLIENTE"]; ?>" />
+                    <input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="hidden" value="<?php echo $cliente["APELLIDOS_CLIENTE"]; ?>" />
+
+                    <td><?php echo $cliente["ID_CLIENTE"] ?></td>
+                    <?php if (isset($CLIENTE_EDIT) && $cliente["ID_CLIENTE"] == $CLIENTE_EDIT["ID_CLIENTE"]) { ?>
+                        <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $cliente['TLF_CLIENTE']?>" required/></td>
+                        <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $cliente['NOMBRE_CLIENTE']?>" required/></td>
+                        <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $cliente['APELLIDOS_CLIENTE']?>" required/></td>
+                    <?php }	else { ?>
+                        <td><?php echo $cliente["TLF_CLIENTE"] ?></td>
+                        <td><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
+                        <td><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
+                    <?php } ?>
+                    <?php if ($login["categoria"] == "GERENTE")  { ?>
+                        <?php if (!isset($CLIENTE_EDIT)) { ?>
+                            <td><button type="submit" id="editar" name="editar" class="botonEdit">Edit</button></td>
+                        <?php }	else { ?>
+                            <td><button type="submit" id="grabar" name="grabar" class="botonGrabar">OK</button></td>
+                        <?php } ?>
+                        <td><button type="submit" id="copiar" name="copiar" class="botonCopy">Copy</button></td>
+                        <td><button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
+                        <?php
+                    } ?>
+                </form>
             </tr>
             <?php
         } ?>
