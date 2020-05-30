@@ -1,6 +1,37 @@
 <?php
 	session_start();
-	
+    require_once("gestionBD.php");
+
+    /* =======================================================
+                        EDITAR Y BORRAR
+    ======================================================= */
+    if (isset($_REQUEST["ID_CLIENTE"])) {
+        $cliente["ID_CLIENTE"] = $_REQUEST["ID_CLIENTE"];
+        $cliente["TLF_CLIENTE"] = $_REQUEST["TLF_CLIENTE"];
+        $cliente["NOMBRE_CLIENTE"] = $_REQUEST["NOMBRE_CLIENTE"];
+        $cliente["APELLIDOS_CLIENTE"] = $_REQUEST["APELLIDOS_CLIENTE"];
+
+        if (!isset($_REQUEST["copiar"])) {
+            if (isset($_REQUEST["editar"])) {
+                $_SESSION["CLIENTE_EDIT"] = $cliente;
+            } else if (isset($_REQUEST["grabar"])) {
+                unset($_SESSION["CLIENTE_EDIT"]);
+                $conexion = crearConexionBD();
+                update_cliente($conexion, $cliente);
+                cerrarConexionBD($conexion);
+            } else if (isset($_REQUEST["borrar"])) {
+                $conexion = crearConexionBD();
+                remove_cliente($conexion, $cliente["ID_CLIENTE"]);
+                cerrarConexionBD($conexion);
+            }
+            Header('Location: clientes.php');
+            return;
+        }
+    }
+
+    /* =======================================================
+                            FORMULARIO
+       ======================================================= */
 	if (isset($_SESSION["formulario_cliente"])) {
 
 		$nuevoCliente["TLF_CLIENTE"] = $_REQUEST["TLF_CLIENTE"];
@@ -18,12 +49,10 @@
 		$_SESSION["errores_cliente"] = $errores_cliente;
 		Header('Location: clientes.php');
 	} else {
-		require_once("gestionBD.php");
-
 		$conexion = crearConexionBD();
         if (add_cliente($conexion, $nuevoCliente)) {
-            $_SESSION["formulario_cliente"] = null;
-            $_SESSION["errores_cliente"] = null;
+            unset($_SESSION["formulario_cliente"]);
+            unset($_SESSION["errores_cliente"]);
         }
 		cerrarConexionBD($conexion);
 		Header('Location: clientes.php');
@@ -58,4 +87,30 @@
 			return false;
 		}
 	}
+
+    //Eliminar de la base de datos
+    function remove_cliente($conexion,$ID_CLIENTE) {
+        try {
+            $stmt=$conexion->prepare('CALL BORRAR_CLIENTE(:ID_CLIENTE)');
+            $stmt->bindParam(':ID_CLIENTE',$ID_CLIENTE);
+            $stmt->execute();
+            return true;
+        } catch(PDOException $e) {
+            return false;
+        }
+    }
+
+	function update_cliente($conexion, $cliente) {
+        try {
+            $stmt=$conexion->prepare('CALL EDITAR_CLIENTE(:ID_CLIENTE,:TLF_CLIENTE,:NOMBRE_CLIENTE,:APELLIDOS_CLIENTE)');
+            $stmt->bindParam(':ID_CLIENTE',$cliente['ID_CLIENTE']);
+            $stmt->bindParam(':TLF_CLIENTE',$cliente['TLF_CLIENTE']);
+            $stmt->bindParam(':NOMBRE_CLIENTE',$cliente['NOMBRE_CLIENTE']);
+            $stmt->bindParam(':APELLIDOS_CLIENTE',$cliente['APELLIDOS_CLIENTE']);
+            $stmt->execute();
+            return true;
+        } catch(PDOException $e) {
+            return false;
+        }
+    }
 ?>
