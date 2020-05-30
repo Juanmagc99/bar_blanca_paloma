@@ -35,10 +35,10 @@
 
 	<main>
 		<?php 
-			if (alta_empleado($conexion, $nuevoUsuario)) {  //Si la funcion alta_usuario devuelve TRUE
+			if (alta_empleado($conexion, $nuevoUsuario)) {  
                 $nuevoUsuario['pass'] = null;
                 $nuevoUsuario['confirmpass'] = null;
-				$_SESSION['login'] = $nuevoUsuario;	//entonces el login de la sesion de ese empleado será con el NIF
+				$_SESSION['login'] = $nuevoUsuario;	
 		?>
 			<p>Hola <?php echo $nuevoUsuario["nombre"]; ?>, has sido dado de alta en nuestra página correctamente con los siguientes datos:</p>
 			<ul>

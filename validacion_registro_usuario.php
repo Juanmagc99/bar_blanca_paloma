@@ -36,22 +36,44 @@
 	
 	function validarDatosUsuario($nuevoUsuario){
 				
+		//validacion nombre
+		if ($nuevoUsuario["nombre"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tu nombre</p>";
+		} else if(!preg_match("/^[A-Za-z]+$/", $nuevoUsuario["nombre"])){
+			$errores[] = "<p>El nombre debe ser una cadena de letras: " . $nuevoUsuario["nombre"]. "</p>";
+		}
+		
+		//validacion apellidos
+		if ($nuevoUsuario["apellidos"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tus apellidos</p>";
+		} else if(!preg_match("/^[A-Za-z ]+$/", $nuevoUsuario["apellidos"])){
+			$errores[] = "<p>Los apellidos deben ser una cadena de letras: " . $nuevoUsuario["nombre"]. "</p>";
+		}
+				
 		// Validación nif
-		if(!preg_match("/^[0-9]{8}[A-Z]$/", $nuevoUsuario["nif"])){
+		if ($nuevoUsuario["nif"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tu NIF</p>";
+		}else if(!preg_match("/^[0-9]{8}[A-Z]$/", $nuevoUsuario["nif"])){
 			$errores[] = "<p>El NIF debe contener 8 números y una letra mayúscula: " . $nuevoUsuario["nif"]. "</p>";
 		}
 		
 		//Validacion tlfn 9 digitos
-		if(!preg_match("/^[0-9]{9}$/", $nuevoUsuario["tlfn"])){
+		if ($nuevoUsuario["tlfn"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tu teléfono de contacto</p>";
+		}else if(!preg_match("/^[0-9]{9}$/", $nuevoUsuario["tlfn"])){
 			$errores[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoUsuario["tlfn"]. "</p>";
 		}
 		//Validacion codigo postal 5 digitos
-		if(!preg_match("/^[0-9]{5}$/", $nuevoUsuario["codigoPostal"])){
+		if ($nuevoUsuario["codigoPostal"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tu código postal</p>";
+		}else if(!preg_match("/^[0-9]{5}$/", $nuevoUsuario["codigoPostal"])){
 			$errores[] = "<p>El código postal debe tener 5 numeros: " . $nuevoUsuario["codigoPostal"]. "</p>";
 		}
 		
 		// Validación email
-		if(!filter_var($nuevoUsuario["email"], FILTER_VALIDATE_EMAIL)){
+		if ($nuevoUsuario["email"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner tu email de contacto</p>";
+		}else if(!filter_var($nuevoUsuario["email"], FILTER_VALIDATE_EMAIL)){
 			$errores[] = $error . "<p>El email es incorrecto: " . $nuevoUsuario["email"]. "</p>";
 		}
 		
@@ -71,7 +93,9 @@
 		}
 		
 		// Validación contraseña
-		if(!isset($nuevoUsuario["pass"]) || strlen($nuevoUsuario["pass"])<8){
+		if ($nuevoUsuario["pass"] == ""){
+			$errores[] = "<p>No puedes continuar sin poner una contraseña para loguearte</p>";
+		}else if(strlen($nuevoUsuario["pass"])<8){
 			$errores [] = "<p>Contraseña no válida: debe tener al menos 8 caracteres</p>";
 		}else if(!preg_match("/[a-z]+/", $nuevoUsuario["pass"]) || 
 			!preg_match("/[A-Z]+/", $nuevoUsuario["pass"]) || !preg_match("/[0-9]+/", $nuevoUsuario["pass"])){
