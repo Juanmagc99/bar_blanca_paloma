@@ -53,7 +53,7 @@
 				<li><?php echo "Categoria: " . $nuevoUsuario["categoria"]; ?></li>
 			</ul>
 			<div >	
-				Pulsa <a href="menu.html">aquí</a> para acceder a la pagina del bar.
+				Pulsa <a href="menu.php">aquí</a> para acceder a la pagina del bar.
 			</div>
 		<?php } else { ?>
 			<p>Ya hay un empleado con esos datos.</p>
