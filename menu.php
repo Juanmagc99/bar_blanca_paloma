@@ -30,7 +30,7 @@
                 border-color: #05CB74;
                 color: black;
                 border-style: outset;
-                padding: 14px 25px;
+                padding: 75px;
                 font-size:200%;
                 text-align: center;
                 text-decoration: none;
@@ -49,10 +49,14 @@
         <h1>Bar Blanca Paloma</h1>
         <h2>Bienvenido</h2>
         <a href="clientes.php">Clientes</a>
-        <a href="Carta.php">Carta</a>
         <a href="reservas.php">Reservas</a>
+        <a href="mesas.php">Mesas</a>
         <?php if ($login["categoria"] == "GERENTE") {	?>
-            <a href="logout.php">a</a>
+            <a href="adminCarta.php">Carta</a>
+            <a href="adminEmpleados.php">Empleados</a>
+        <?php }
+        else {	?>
+            <a href="Carta.php">Carta</a>
         <?php } ?>
 
         <p><a href="logout.php">Cerrar sesión</a></p>
