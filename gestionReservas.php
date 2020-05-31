@@ -7,8 +7,8 @@
     ======================================================= */
     if (isset($_REQUEST["ID_RESERVA"])) {
         $reserva["ID_RESERVA"] = $_REQUEST["ID_RESERVA"];
-        $reserva["HORA_ENTRADA"] = $_REQUEST["HORA_ENTRADA"];
-        $reserva["HORA_SALIDA"] = $_REQUEST["HORA_SALIDA"];
+        $reserva["HORA_ENTRADA"] = date('Y-m-d H:i',strtotime($_REQUEST["HORA_ENTRADA"]));
+        $reserva["HORA_SALIDA"] = date('Y-m-d H:i',strtotime($_REQUEST["HORA_SALIDA"]));
         $reserva["ID_CLIENTE1"] = $_REQUEST["ID_CLIENTE1"];
         $reserva["ID_MESA1"] = $_REQUEST["ID_MESA1"];
 
@@ -37,8 +37,8 @@
    ======================================================= */
     if (isset($_SESSION["formulario_reserva"])) {
 
-        $nuevaReserva["HORA_ENTRADA"] = $_REQUEST["HORA_ENTRADA"];
-        $nuevaReserva["HORA_SALIDA"] = $_REQUEST["HORA_SALIDA"];
+        $nuevaReserva["HORA_ENTRADA"] = date('Y-m-d H:i',strtotime($_REQUEST["HORA_ENTRADA"]));
+        $nuevaReserva["HORA_SALIDA"] = date('Y-m-d H:i',strtotime($_REQUEST["HORA_SALIDA"]));
         $nuevaReserva["ID_CLIENTE1"] = $_REQUEST["ID_CLIENTE1"];
         $nuevaReserva["ID_MESA1"] = $_REQUEST["ID_MESA1"];
     }
