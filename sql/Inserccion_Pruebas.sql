@@ -97,41 +97,34 @@ execute add_mesa(w_tipo_mesa=>'EXTERIOR',w_capacidad=>4,w_dni_empleado1=>'123456
 --Insertar reservas
 
 BEGIN
-add_reserva(w_horaentrada_reserva=> TO_DATE('2020-06-24 16:00','YYYY-MM-DD
-HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-06-24 17:00','YYYY-MM-DD HH24:MI'),
-w_id_cliente1=>2,w_id_mesa1=>1);
+add_reserva(w_horaentrada_reserva=> TO_DATE('2020-06-24 16:00','YYYY-MM-DD HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-06-24 17:00','YYYY-MM-DD HH24:MI'),w_id_cliente1=>41,w_id_mesa1=>22);
 END;
 
 BEGIN
 add_reserva(w_horaentrada_reserva=> TO_DATE('2020-06-24 16:00','YYYY-MM-DD
 HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-06-24 17:00','YYYY-MM-DD HH24:MI'),
-w_id_cliente1=>1,w_id_mesa1=>3);
+w_id_cliente1=>42,w_id_mesa1=>23);
 END;
 
 BEGIN
 add_reserva(w_horaentrada_reserva=> TO_DATE('2020-06-24 14:00','YYYY-MM-DD
 HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-06-24 15:00','YYYY-MM-DD HH24:MI'),
-w_id_cliente1=>3,w_id_mesa1=>5);
+w_id_cliente1=>44,w_id_mesa1=>24);
 END;
 
 BEGIN
 add_reserva(w_horaentrada_reserva=> TO_DATE('2020-05-27 14:00','YYYY-MM-DD
 HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-05-27 15:00','YYYY-MM-DD HH24:MI'),
-w_id_cliente1=>4,w_id_mesa1=>4);
+w_id_cliente1=>45,w_id_mesa1=>27);
 END;
 
-BEGIN
-add_reserva(w_horaentrada_reserva=> TO_DATE('2020-05-28 14:00','YYYY-MM-DD
-HH24:MI'),w_horasalida_reserva=>TO_DATE('2020-05-28 15:00','YYYY-MM-DD HH24:MI'),
-w_id_cliente1=>21,w_id_mesa1=>6);
-END;
 
 --Insertar empleados
-execute add_pedido(w_id_mesa2=>1);
+execute add_pedido(w_id_mesa2=>21);
 
-execute add_pedido(w_id_mesa2=>2);
-execute add_pedido(w_id_mesa2=>6);
+execute add_pedido(w_id_mesa2=>22);
+execute add_pedido(w_id_mesa2=>27);
 
-execute add_lineapedido(w_id_pedido1=>3,w_nombre_producto2=>'Flan Casero',w_cantidad_pedido=>2);
-execute add_lineapedido(w_id_pedido1=>3,w_nombre_producto2=>'Merluza',w_cantidad_pedido=>2);
-execute add_lineapedido(w_id_pedido1=>3,w_nombre_producto2=>'Natillas',w_cantidad_pedido=>2);
+execute add_lineapedido(w_id_pedido1=>26,w_nombre_producto2=>'Natillas',w_cantidad_pedido=>2);
+execute add_lineapedido(w_id_pedido1=>26,w_nombre_producto2=>'Merluza',w_cantidad_pedido=>2);
+execute add_lineapedido(w_id_pedido1=>26,w_nombre_producto2=>'Filetes de pollo',w_cantidad_pedido=>2);

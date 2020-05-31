@@ -11,15 +11,15 @@ w_Poblacion VARCHAR,
 w_CodigoPostal INT,  
 w_FechaAlta DATE,  
 w_FechaBaja DATE,  
-w_HashContraseña VARCHAR,  
-w_SaltContraseña VARCHAR,  
+w_HashContraseï¿½a VARCHAR,  
+w_SaltContraseï¿½a VARCHAR,  
 w_Categoria VARCHAR)  
 IS  
 BEGIN  
 INSERT INTO empleado (DNI, NombreEmpleado, ApellidoEmpleado, telefono, Poblacion, CodigoPostal, 
-FechaAlta, FechaBaja, HashContraseña, SaltContraseña, Categoria)  
+FechaAlta, FechaBaja, HashContraseï¿½a, SaltContraseï¿½a, Categoria)  
 VALUES (w_DNI, w_NombreEmp, w_ApellidoEmp, w_telefono, w_Poblacion, w_CodigoPostal, w_FechaAlta, 
-w_FechaBaja, w_HashContraseña, w_SaltContraseña, w_Categoria);  
+w_FechaBaja, w_HashContraseï¿½a, w_SaltContraseï¿½a, w_Categoria);  
 END add_empleado; 
 /
 CREATE OR REPLACE PROCEDURE add_producto 
@@ -79,7 +79,7 @@ CREATE OR REPLACE PROCEDURE add_pedido
 IS 
 BEGIN  
 INSERT INTO pedido(id_pedido,id_mesa2,Fecha_pedido,estado_pedido,importe)  
-VALUES (sec_pedido.nextval,w_id_mesa2,CURRENT_DATE,'SIN_PAGAR',);  
+VALUES (sec_pedido.nextval,w_id_mesa2,CURRENT_DATE,'SIN_PAGAR',NULL);
 END add_pedido; 
 /
 CREATE OR REPLACE PROCEDURE add_lineapedido  
@@ -257,9 +257,9 @@ BEGIN
    UPDATE PEDIDO SET IMPORTE = importe_total WHERE ID_PEDIDO = id_cerrar;
 END;
 
-create or replace PROCEDURE AÑADIR_MESA (id_mesa_a_añadir in mesa.id_mesa%TYPE,tipo_mesa_a_añadir IN mesa.tipo_mesa%TYPE, capacidad_a_añadir IN mesa.capacidad%TYPE, dni_a_añadir IN mesa.dni_empleado1%TYPE) IS
+create or replace PROCEDURE Aï¿½ADIR_MESA (id_mesa_a_aï¿½adir in mesa.id_mesa%TYPE,tipo_mesa_a_aï¿½adir IN mesa.tipo_mesa%TYPE, capacidad_a_aï¿½adir IN mesa.capacidad%TYPE, dni_a_aï¿½adir IN mesa.dni_empleado1%TYPE) IS
 BEGIN
-    INSERT INTO MESA(ID_MESA,TIPO_MESA,CAPACIDAD,DNI_EMPLEADO1) VALUES (id_mesa_a_añadir,tipo_mesa_a_añadir,capacidad_a_añadir,dni_a_añadir);
+    INSERT INTO MESA(ID_MESA,TIPO_MESA,CAPACIDAD,DNI_EMPLEADO1) VALUES (id_mesa_a_aï¿½adir,tipo_mesa_a_aï¿½adir,capacidad_a_aï¿½adir,dni_a_aï¿½adir);
 END;
 
 create or replace PROCEDURE BORRAR_MESA (id_mesa_a_quitar IN mesa.id_mesa%TYPE) IS
