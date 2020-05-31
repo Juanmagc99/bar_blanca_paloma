@@ -110,6 +110,7 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
             return false;
         if (!tlf.match("[0-9]{9}"))
             return false;
+        return true;
     }
 </script>
 </body>

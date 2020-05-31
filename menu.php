@@ -3,13 +3,16 @@
 
 	if (!isset($_SESSION['login']))
 		header("Location: login_sesion.php");
+    $login = $_SESSION['login'];
  ?>
 <!DOCTYPE html>
 <html>
     <head>
         <style>
             body {
-                background-color: lightskyblue;
+                background-color: #0F398C;
+                font-family: "Lato", sans-serif;
+                font-weight: bold;
             }
             h1 {
                 text-align: center;
@@ -21,31 +24,39 @@
                 width: 10%;
                 height: 10%;
             }
-            .carta {
-                border: medium dotted red;
-            }
-            mesas {
 
+            a:link, a:visited {
+                background-color: #05CB74;
+                border-color: #05CB74;
+                color: black;
+                border-style: outset;
+                padding: 14px 25px;
+                font-size:200%;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 0 auto;
             }
-            reservas {
 
+            a:hover, a:active {
+                background-color: #29912d;
             }
-            admin {
 
-            }
         </style>
     </head>
     <body>
-        <img src="../../Desktop/bar_blanca_paloma/Imagenes/Paloma.png" alt="Logo Blanca Paloma">
+        <img src="Imagenes/Paloma.png" alt="Logo Blanca Paloma">
         <h1>Bar Blanca Paloma</h1>
         <h2>Bienvenido</h2>
-        <a id="carta" href="carta.html">Carta</a>
-        <a id="mesas" href="mesas.html">Mesas</a>
-        <a id="reservas" href="reservas.html">Reservas</a>
-        <a id="admin" href="adminCarta.php">Admin</a>
-        
-        <p><?php if (isset($_SESSION['login'])) {	?>
-					<a href="logout.php">Desconectar</a>
-					<?php } ?></p>
+        <a href="clientes.php">Clientes</a>
+        <a href="Carta.php">Carta</a>
+        <a href="reservas.php">Reservas</a>
+        <?php if ($login["categoria"] == "GERENTE") {	?>
+            <a href="logout.php">a</a>
+        <?php } ?>
+
+        <p><a href="logout.php">Cerrar sesión</a></p>
+
+
     </body>
 </html>
