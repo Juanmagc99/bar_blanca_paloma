@@ -87,6 +87,7 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
                         <?php } ?>
                 </form>
             </tr>
+        <?php } ?>
             <form name="addCliente" id="addCliente" method="get" action="gestionClientes.php" onsubmit="return validarDatos('addCliente')">
                 <tr>
                 <td></td>
