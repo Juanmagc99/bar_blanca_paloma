@@ -261,17 +261,17 @@ create or replace PROCEDURE A�ADIR_MESA (id_mesa_a_a�adir in mesa.id_mesa%TY
 BEGIN
     INSERT INTO MESA(ID_MESA,TIPO_MESA,CAPACIDAD,DNI_EMPLEADO1) VALUES (id_mesa_a_a�adir,tipo_mesa_a_a�adir,capacidad_a_a�adir,dni_a_a�adir);
 END;
-
+/
 create or replace PROCEDURE BORRAR_MESA (id_mesa_a_quitar IN mesa.id_mesa%TYPE) IS
 BEGIN
     DELETE FROM MESA WHERE id_mesa = id_mesa_a_quitar;
 END;
-
+/
 create or replace PROCEDURE EDITAR_MESA(id_mesa_mod in mesa.id_mesa%TYPE, capacidad_mod in mesa.capacidad%TYPE)IS
     BEGIN
         UPDATE MESA SET capacidad = capacidad_mod WHERE id_mesa = id_mesa_mod;
 END;
-
+/
 create or replace PROCEDURE EDITAR_EMPLEADO (dni_empleado in empleado.DNI%TYPE, telefono_empleado in empleado.telefono%TYPE,
 poblacion_empleado in empleado.poblacion%TYPE, codpostal_empleado in empleado.codigopostal%TYPE,
 categoria_empleado in empleado.categoria%TYPE)IS
@@ -280,8 +280,9 @@ BEGIN
   categoria = categoria_empleado
   WHERE DNI = dni_empleado;
 END;
-
+/
 create or replace PROCEDURE BORRAR_EMPLEADO (dni_empleado_borrar IN empleado.DNI%TYPE) IS 
 BEGIN
     DELETE FROM EMPLEADO WHERE DNI = dni_empleado_borrar;
 END;
+/

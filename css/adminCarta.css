@@ -205,19 +205,3 @@ tr:nth-child(even) {
   width: 70px;
   background: #FFFFFF;
 }
-
-.botonAdd{
- border: black 2px solid;
- background-color: #FFFFFF;
- width:65px;
- height:70px;
- font-size: 40px;
- transition: 0.3s;
- font-weight: bold;
- cursor: pointer;
- text-align: center;
-}
-
-.botonAdd:hover {
-  background-color: #0EE1DE;
-}

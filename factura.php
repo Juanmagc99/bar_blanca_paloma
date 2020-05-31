@@ -35,7 +35,7 @@ cerrarConexionBD($conexion);
 <html>
 <head>
     <title>Factura</title>
-    <link rel="stylesheet" type="text/css" href="css/factura.css">
+    <link rel="stylesheet" type="text/css" href="css/comun.css">
 </head>
 <body>
 <div>

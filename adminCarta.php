@@ -17,14 +17,20 @@
 	$productos = array();
 	foreach ($filas as $fila) {
 		array_push($productos, $fila);
+		
+	if (isset($_SESSION["errores"]))
+		$errores = $_SESSION["errores"];	
 	}
+	unset($_SESSION["errores"]);
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/adminCarta.css">
+	<script src="js/validacion_precio.js" type="text/javascript"></script>
 	<title>adminCarta</title>
+	
 </head>
 <body>
 	
@@ -72,7 +78,7 @@
     <?php foreach ($productos as $media){
     	 		if($media["DESCRIPCION"] == 'Media') { ?>
 	<tr>
-		<form method="post" action="controlador_lineaPedidos.php">
+		<form id="formProducto" method="get" action="controlador_productos.php" onsubmit="return validateForm()" novalidate>
 			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $media["ID_PRODUCTO"]; ?>" />
 			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $media["NOMBRE_PRODUCTO1"]; ?>" />
 			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $media["PRECIO_PRODUCTO"]; ?>" />
@@ -82,7 +88,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $media["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $media["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio""><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $media["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO_MOD" name="PRECIO_PRODUCTO" oninput="return precioValidation()" value="<?php echo $media["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $media["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $media["NOMBRE_PRODUCTO1"] ?></td>
@@ -104,6 +110,16 @@
         }
         ?>
   </table>
+  
+  <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 <div id="Combinados" class="tabcontent">
@@ -116,7 +132,7 @@
 	</tr>
 	<?php foreach ($productos as $combinado) { if($combinado["DESCRIPCION"] == 'Combinado') { ?>
 	<tr>
-		<form method="post" action="controlador_productos.php">
+		<form id="formProducto" method="post" action="controlador_productos.php" onsubmit="return validateForm()" novalidate>
 			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $combinado["ID_PRODUCTO"]; ?>" />
 			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $combinado["NOMBRE_PRODUCTO1"]; ?>" />
 			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $combinado["PRECIO_PRODUCTO"]; ?>" />
@@ -126,7 +142,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $combinado["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $combinado["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $combinado["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO_MOD" name="PRECIO_PRODUCTO" oninput="return precioValidation()" value="<?php echo $combinado["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $combinado["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $combinado["NOMBRE_PRODUCTO1"] ?></td>
@@ -148,6 +164,16 @@
         }
         ?>
   </table>
+  
+    <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 <div id="Carnes" class="tabcontent">
@@ -160,7 +186,7 @@
 	</tr>
 	<?php foreach ($productos as $carne){ if($carne["DESCRIPCION"] == 'Carne') { ?>
 	<tr>
-		<form method="post" action="controlador_productos.php">
+		<form id="formProducto" method="post" action="controlador_productos.php" onsubmit="return validateForm()">
 			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $carne["ID_PRODUCTO"]; ?>" />
 			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $carne["NOMBRE_PRODUCTO1"]; ?>" />
 			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $carne["PRECIO_PRODUCTO"]; ?>" />
@@ -170,7 +196,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $carne["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $carne["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $carne["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO_MOD" name="PRECIO_PRODUCTO" oninput="return precioValidation()" value="<?php echo $carne["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $carne["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $carne["NOMBRE_PRODUCTO1"] ?></td>
@@ -192,6 +218,16 @@
         }
         ?>
   </table>
+  
+    <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 <div id="Pescados" class="tabcontent">
@@ -214,7 +250,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $pescado["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $pescado["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $pescado["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" pattern="[0-9]{1,2}(,[0-9]{1})?" title="debe contener de 1 a 2 números y si metes decimales solo 1 detras de la coma" required value="<?php echo $pescado["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $pescado["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $pescado["NOMBRE_PRODUCTO1"] ?></td>
@@ -236,6 +272,16 @@
         }
         ?>
     </table>
+    
+      <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 <div id="Bebidas" class="tabcontent">
@@ -258,7 +304,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $bebida["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $bebida["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $bebida["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" pattern="[0-9]{1,2}(,[0-9]{1})?" title="debe contener de 1 a 2 números y si metes decimales solo 1 detras de la coma" required value="<?php echo $bebida["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $bebida["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $bebida["NOMBRE_PRODUCTO1"] ?></td>
@@ -280,6 +326,15 @@
         }
         ?>
     </table>
+      <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 <div id="Postres" class="tabcontent">
@@ -302,7 +357,7 @@
 			<?php 
 			if (isset($producto) and ($producto["NOMBRE_PRODUCTO1"] == $postre["NOMBRE_PRODUCTO1"])) { ?>
 			<td class="celdaNombre"><?php echo $postre["NOMBRE_PRODUCTO1"] ?></td>
-    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" value="<?php echo $postre["PRECIO_PRODUCTO"] ?>"/></td>
+    		<td class="celdaPrecio"><input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" pattern="[0-9]{1,2}(,[0-9]{1})?" title="debe contener de 1 a 2 números y si metes decimales solo 1 detras de la coma" required value="<?php echo $postre["PRECIO_PRODUCTO"] ?>"/></td>
     		<?php }	else { ?>
     		<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $postre["PRECIO_PRODUCTO"]; ?>"/>
     		<td class="celdaNombre"><?php echo $postre["NOMBRE_PRODUCTO1"] ?></td>
@@ -324,6 +379,16 @@
         }
         ?>
     </table>
+    
+      <?php 
+	
+	if (isset($errores) && count($errores)>0) { 
+	    	echo "<div id=\"div_errores\" class=\"error\">";
+			echo "<h4> Error al introducir precio:</h4>";
+    		foreach($errores as $error) echo $error; 
+    		echo "</div>";
+  		}
+	?>
 </div>
 
 

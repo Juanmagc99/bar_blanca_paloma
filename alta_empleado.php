@@ -25,14 +25,16 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css"  href="css/alta_empleado.css" />
   <title>Bar Blanca Paloma: Alta de empleado realizada con éxito</title>
 </head>
 
 <body>
+	
 	<?php
-		include_once("header.html");
+		include_once("Header.html");
 	?>
-
+<div class="alta">
 	<main>
 		<?php 
 			if (alta_empleado($conexion, $nuevoUsuario)) {  
@@ -52,8 +54,8 @@
 				<li><?php echo "Fecha de baja: " . $fechaBajaFormateada; ?></li>
 				<li><?php echo "Categoria: " . $nuevoUsuario["categoria"]; ?></li>
 			</ul>
-			<div >	
-				Pulsa <a href="menu.html">aquí</a> para acceder a la pagina del bar.
+			<div class="enlace">	
+				Pulsa <a href="../../../Users/Juanma/Desktop/Blanca%20Paloma%20Prada/menu.php">aquí</a> para acceder a la pagina del bar.
 			</div>
 		<?php } else { ?>
 			<p>Ya hay un empleado con esos datos.</p>
@@ -61,8 +63,9 @@
 				Pulsa <a href="registro_usuario.php">aquí</a> para volver al formulario de registro.
 			</div>
 		<?php } ?>
-
+	
 	</main>
+	</div>
 </body>
 </html>
 <?php

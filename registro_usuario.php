@@ -29,7 +29,8 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/registro_usuario.css" />
+  <link rel="stylesheet" type="text/css" href="../../../Users/Juanma/Desktop/Blanca%20Paloma%20Prada/css/registro_usuario.css"/>
+  <script src="js/validacion_registro_usuario.js" type="text/javascript"></script>
   <title>Gestión de Bar Blanca Paloma: Alta de Usuarios</title>
 </head>
 
@@ -48,7 +49,7 @@
   		}
 	?>
 	
-	<form id="altaUsuario" method="get" action="validacion_registro_usuario.php">
+	<form id="altaUsuario" method="get" action="validacion_registro_usuario.php" onsubmit="return validateForm()">
 		<p><i>TODOS LOS CAMPOS A RELLENAR SON DE CARÁCTER OBLIGATORIO</i></p>
 		<fieldset><legend>Datos personales</legend>
 			
@@ -92,13 +93,13 @@
 			
 			<div><label for="categoria">Categoría:</label>
 			<label>
-				<input name="categoria" type="radio" value="GERENTE" <?php if($formulario['categoria']=='GERENTE') echo ' checked ';?>/>
+				<input class="opciones" name="categoria" type="radio" value="GERENTE" <?php if($formulario['categoria']=='GERENTE') echo ' checked ';?>/>
 				Gerente</label>
 			<label>
-				<input name="categoria" type="radio" value="CAMARERO" <?php if($formulario['categoria']=='CAMARERO') echo ' checked ';?>/>
+				<input class="opciones" name="categoria" type="radio" value="CAMARERO" <?php if($formulario['categoria']=='CAMARERO') echo ' checked ';?>/>
 				Camarero</label>
 			<label>
-				<input name="categoria" type="radio" value="COCINERO" <?php if($formulario['categoria']=='COCINERO') echo ' checked ';?>/>
+				<input class="opciones" name="categoria" type="radio" value="COCINERO" <?php if($formulario['categoria']=='COCINERO') echo ' checked ';?>/>
 				Cocinero</label>
 			</div>
 		
@@ -113,14 +114,14 @@
 
 		<fieldset><legend>Datos de cuenta</legend>
 			<div><label for="pass">Password:<em>*</em></label>
-			<input type="password" name="pass" id="pass" size="70" pattern="[A-Z]\[a-z]{5}\[0-9]" title="8 caracteres con letras minúsculas y mayúsculas, ademas de dígitos" required/>
+			<input type="password" name="pass" id="pass" size="70" title="8 caracteres con letras minúsculas y mayúsculas, ademas de dígitos" required oninput="passwordValidation()"/>
 			</div>
 			<div><label for="confirmpass">Confirmar Password:</label>
-			<input type="password" name="confirmpass" id="confirmpass" size="60" placeholder="Confirmación de contraseña" required />
+			<input type="password" name="confirmpass" id="confirmpass" size="60" placeholder="Confirmación de contraseña" required oninput="passwordConfirmation()"/>
 			</div>
 		</fieldset>
 
-		<div><input type="submit" value="Enviar" /></div>
+		<div class="botonEnviar"><input class="registro" type="submit" value="Enviar" /></div>
 
 	</form>
 

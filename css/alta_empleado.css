@@ -1,0 +1,21 @@
+body{
+  background-color: #0F398C;
+  font-family: "Lato", sans-serif;
+
+}
+
+.alta{
+	background: white;
+	border: black 3px solid;
+	margin-left: auto;
+	margin-right:auto;
+	text-align: center;
+	width: 50%;
+	padding-bottom: 20px;
+	font-weight: bold
+}
+
+a{
+	text-decoration: none;
+	color: yellow;
+}

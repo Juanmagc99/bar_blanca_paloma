@@ -18,7 +18,7 @@ cerrarConexionBD($conexion);
 <html>
 <head>
     <title>DatosImportantes</title>
-    <link rel="stylesheet" type="text/css" href="css/factura.css">
+    <link rel="stylesheet" type="text/css" href="css/comun.css">
 </head>
 <body>
 <?php
