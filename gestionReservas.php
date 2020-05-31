@@ -5,32 +5,32 @@
     /* =======================================================
                         EDITAR Y BORRAR
     ======================================================= */
-/*if (isset($_REQUEST["ID_RESERVA"])) {
-    $reserva["ID_RESERVA"] = $_REQUEST["ID_RESERVA"];
-    $reserva["HORA_ENTRADA"] = $_REQUEST["HORA_ENTRADA"];
-    $reserva["HORA_SALIDA"] = $_REQUEST["HORA_SALIDA"];
-    $reserva["ID_CLIENTE1"] = $_REQUEST["ID_CLIENTE1"];
-    $reserva["ID_MESA1"] = $_REQUEST["ID_MESA1"];
+    if (isset($_REQUEST["ID_RESERVA"])) {
+        $reserva["ID_RESERVA"] = $_REQUEST["ID_RESERVA"];
+        $reserva["HORA_ENTRADA"] = $_REQUEST["HORA_ENTRADA"];
+        $reserva["HORA_SALIDA"] = $_REQUEST["HORA_SALIDA"];
+        $reserva["ID_CLIENTE1"] = $_REQUEST["ID_CLIENTE1"];
+        $reserva["ID_MESA1"] = $_REQUEST["ID_MESA1"];
 
-    if (!validarDatosUsuario($reserva)) return;
+        if (!validarDatosUsuario($reserva)) return;
 
-    if (!isset($_REQUEST["copiar"])) {
-        if (isset($_REQUEST["editar"])) {
-            $_SESSION["RESERVA_EDIT"] = $reserva;
-        } else if (isset($_REQUEST["grabar"])) {
-            unset($_SESSION["RESERVA_EDIT"]);
-            $conexion = crearConexionBD();
-            update_reserva($conexion, $reserva);
-            cerrarConexionBD($conexion);
-        } else if (isset($_REQUEST["borrar"])) {
-            $conexion = crearConexionBD();
-            remove_reserva($conexion, $reserva["ID_RESERVA"]);
-            cerrarConexionBD($conexion);
+        if (!isset($_REQUEST["copiar"])) {
+            if (isset($_REQUEST["editar"])) {
+                $_SESSION["RESERVA_EDIT"] = $reserva;
+            } else if (isset($_REQUEST["grabar"])) {
+                unset($_SESSION["RESERVA_EDIT"]);
+                $conexion = crearConexionBD();
+                update_reserva($conexion, $reserva);
+                cerrarConexionBD($conexion);
+            } else if (isset($_REQUEST["borrar"])) {
+                $conexion = crearConexionBD();
+                remove_reserva($conexion, $reserva["ID_RESERVA"]);
+                cerrarConexionBD($conexion);
+            }
+            Header('Location: reservas.php');
+            return;
         }
-        Header('Location: reservas.php');
-        return;
     }
-}
 
 /* =======================================================
                         FORMULARIO
@@ -156,11 +156,12 @@
 
     function update_reserva($conexion, $reserva) {
         try {
-            $stmt=$conexion->prepare('CALL EDITAR_RESERVA(:ID_RESERVA,:TLF_RESERVA,:NOMBRE_RESERVA,:APELLIDOS_RESERVA)');
+            $stmt=$conexion->prepare("CALL EDITAR_RESERVA(:ID_RESERVA,TO_DATE(:HORA_ENTRADA, 'YYYY-MM-DD HH24:MI'), TO_DATE(:HORA_SALIDA, 'YYYY-MM-DD HH24:MI'),:ID_CLIENTE1,:ID_MESA1)");
             $stmt->bindParam(':ID_RESERVA',$reserva['ID_RESERVA']);
-            $stmt->bindParam(':TLF_RESERVA',$reserva['TLF_RESERVA']);
-            $stmt->bindParam(':NOMBRE_RESERVA',$reserva['NOMBRE_RESERVA']);
-            $stmt->bindParam(':APELLIDOS_RESERVA',$reserva['APELLIDOS_RESERVA']);
+            $stmt->bindParam(':HORA_ENTRADA', $reserva["HORA_ENTRADA"]);
+            $stmt->bindParam(':HORA_SALIDA', $reserva["HORA_SALIDA"]);
+            $stmt->bindParam(':ID_CLIENTE1', $reserva["ID_CLIENTE1"]);
+            $stmt->bindParam(':ID_MESA1', $reserva["ID_MESA1"]);
             $stmt->execute();
             return true;
         } catch(PDOException $e) {

@@ -47,16 +47,15 @@
 
 	if (validarDatosUsuario($nuevoCliente)) {
         $conexion = crearConexionBD();
-        if (add_cliente($conexion, $nuevoCliente)) {
+        if (add_cliente($conexion, $nuevoCliente))
             unset($_SESSION["formulario_cliente"]);
-            unset($_SESSION["errores_cliente"]);
-        }
         cerrarConexionBD($conexion);
         Header('Location: clientes.php');
 	}
 		
 	// Validación en servidor del formulario
 	function validarDatosUsuario($nuevoCliente){
+        unset($_SESSION["errores_cliente"]);
         //Validacion tlfn 9 digitos
         if(!preg_match("/^[0-9]{9}$/", $nuevoCliente["TLF_CLIENTE"])){
             $errores_cliente[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
