@@ -64,7 +64,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -118,6 +118,9 @@
       <workItem from="1590589577929" duration="8044000" />
       <workItem from="1590617023720" duration="4000000" />
       <workItem from="1590786976321" duration="5274000" />
+      <workItem from="1590830704314" duration="21407000" />
+      <workItem from="1590862364657" duration="14608000" />
+      <workItem from="1590879718258" duration="10153000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
@@ -173,17 +176,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1590394226336" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1590788934163">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1590886666344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590788934163" />
-    <state x="533" y="151" width="998" height="708" key="SettingsEditor" timestamp="1590311871782">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590886666344" />
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor" timestamp="1590854392236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="533" y="151" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590311871782" />
-    <state x="927" y="241" key="run.anything.popup" timestamp="1587995782140">
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590854392236" />
+    <state x="927" y="241" key="run.anything.popup" timestamp="1590877372442">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
+    <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590877372442" />
   </component>
 </project>
