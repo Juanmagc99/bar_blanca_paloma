@@ -48,13 +48,14 @@ foreach($reservas as $row) {
 <div class="muestra_mesas" id="INTERIOR">
     <table class="tabla_mesas">
         <tr>
-            <th>ID_MESA</th>
-            <th>ESTADO</th>
+            <th class="cabecera">ID_MESA</th>
+            <th class="cabecera">ESTADO</th>
+            <th class="botones"></th>
         </tr>
         <?php foreach ($mesas_interiores as $mesa) { ?>
             <tr>
-                <td><?php echo $mesa["ID_MESA"] ?></td>
-                <td><?php foreach ($contendor as $res){
+                <td class="datos"><?php echo $mesa["ID_MESA"] ?></td>
+                <td class="datos"><?php foreach ($contendor as $res){
                         $fecha_entrada = $res["HORA_ENTRADA"];
                         $fecha_salida = $res["HORA_SALIDA"];
                         $estado_mesa = "DISPONIBLE";
@@ -65,7 +66,7 @@ foreach($reservas as $row) {
                     }
                     echo $estado_mesa;
                     ?></td>
-                <td><button>FACTURA</button></td>
+                <td class="botones"><button class="factura">FACTURA</button></td>
                 <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
                     <td><img src="imagenes/flecha.png"></td>
                <?php }?>
@@ -78,13 +79,14 @@ foreach($reservas as $row) {
 <div class="muestra_mesas" id="EXTERIOR">
     <table class="tabla_mesas">
         <tr>
-            <th>ID_MESA</th>
-            <th>ESTADO</th>
+            <th class="cabecera">ID_MESA</th>
+            <th class="cabecera">ESTADO</th>
+            <th class="botones"></th>
         </tr>
         <?php foreach ($mesas_exteriores as $mesa) { ?>
             <tr>
-                <td><?php echo $mesa["ID_MESA"] ?></td>
-                <td><?php foreach ($contendor as $res){
+                <td class="datos"><?php echo $mesa["ID_MESA"] ?></td>
+                <td class="datos"><?php foreach ($contendor as $res){
                     $fecha_entrada = $res["HORA_ENTRADA"];
                     $fecha_salida = $res["HORA_SALIDA"];
                     $estado_mesa = "DISPONIBLE";
@@ -95,7 +97,7 @@ foreach($reservas as $row) {
                     }
                     echo $estado_mesa;
                     ?></td>
-                <td><button>FACTURA</button></td>
+                <td class="botones"><button class="factura">FACTURA</button></td>
                 <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
                     <td>&#8592</td>
                 <?php }?>

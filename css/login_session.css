@@ -1,5 +1,12 @@
-body{
-	background-color:#0F398C;
+body {
+  background-color: #0F398C;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+}
+
+h1{
+	font-size: 40px;
+	color: white;
 }
 
 img{
@@ -9,6 +16,48 @@ img{
 
 .centrado{
 	text-align: center;
+}
+
+input[type=text], select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.entrar{
+  width: 10%;
+  background-color: #2fb535;
+  font-weight: bold;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.entrar:hover{
+	background-color: #29912d;
+}
+
+a{
+	text-decoration: none;
+	color: yellow;
 }
 
 div.error {

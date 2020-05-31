@@ -1,19 +1,24 @@
 body {
-    background-color: #0F398C;
+  background-color: #0F398C;
+  font-family: "Lato", sans-serif;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .boton_mesa {
-    background-color: gray;
+    background-color: white;
     color: black;
+    border: black 2.5px solid;
     padding-bottom: 15px;
     padding-top: 15px;
     width: 10%;
-    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    font-family: "Fira Code";
     font-weight: bold;
     font-size: 15px;
+    border-collapse: collapse;
 }
 
 .muestra_mesas {
@@ -21,43 +26,65 @@ body {
 }
 
 .boton_mesa:hover {
-    background-color: rgba(72,76,79,0.92);
+   background-color: #6397FF;
 }
 
 .boton_mesa.active {
-    background-color: rgba(72,76,79,0.92);
+    background-color: #6397FF;
 }
 
-.tabla_mesas th,td {
-    border: 1px solid black;
-    border-radius: 7px;
-    border-collapse: collapse;
-}
 
 .tabla_mesas {
-    padding-left: 40%;
-    width: 60%;
+  margin: 20px;
+  border: black 2.5px solid;
+  border-collapse: collapse;
+  background: #FAFAFA;
 }
 
-.tabla_mesas th {
-    background-color: #757575;
+.boton_mesa{
+  border: black 2px solid;
+  background-color: #FFFFFF;
+  width:120px;
+  height:50px;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.tabla_mesas td {
-    background-color: #A8A8A8;
+.factura:hover {
+    background-color: yellow;
 }
 
-td, button{
-    background-color: gray;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: "Fira Code";
-    font-size: 15px;
-    width: 100%;
+.cabecera{
+  border: black 2.5px solid;
+  background-color: #A8A8A8;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
 }
 
-td, button:hover {
-    background-color: rgba(72,76,79,0.92);
+.datos{
+  border-left: black 2.5px solid;
+  border-right: black 2.5px solid;
+  padding:7px;
+  font-size:15px;
+  width: 200px;
+}
+
+.botones{
+	border: #0F398C 2.5px solid;
+	background-color: #0F398C;
+	
+}
+
+.factura{
+  border: black 2px solid;
+  background-color: #FFFFFF;
+  width:100px;
+  height:30px;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: bold;
+  cursor: pointer;
 }
