@@ -11,6 +11,8 @@
         $cliente["NOMBRE_CLIENTE"] = $_REQUEST["NOMBRE_CLIENTE"];
         $cliente["APELLIDOS_CLIENTE"] = $_REQUEST["APELLIDOS_CLIENTE"];
 
+        if (!validarDatosUsuario($cliente)) return;
+
         if (!isset($_REQUEST["copiar"])) {
             if (isset($_REQUEST["editar"])) {
                 $_SESSION["CLIENTE_EDIT"] = $cliente;
@@ -43,28 +45,35 @@
 
 	$_SESSION["formulario_cliente"] = $nuevoCliente;
 
- 
-	$errores_cliente = validarDatosUsuario($nuevoCliente);
-	if (count($errores_cliente)>0) {
-		$_SESSION["errores_cliente"] = $errores_cliente;
-		Header('Location: clientes.php');
-	} else {
-		$conexion = crearConexionBD();
-        if (add_cliente($conexion, $nuevoCliente)) {
+	if (validarDatosUsuario($nuevoCliente)) {
+        $conexion = crearConexionBD();
+        if (add_cliente($conexion, $nuevoCliente))
             unset($_SESSION["formulario_cliente"]);
-            unset($_SESSION["errores_cliente"]);
-        }
-		cerrarConexionBD($conexion);
-		Header('Location: clientes.php');
+        cerrarConexionBD($conexion);
+        Header('Location: clientes.php');
 	}
 		
 	// Validación en servidor del formulario
 	function validarDatosUsuario($nuevoCliente){
-		//Validacion tlfn 9 digitos
-		if(!preg_match("/^[0-9]{9}$/", $nuevoCliente["TLF_CLIENTE"])){
-			$errores_cliente[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
-		}
-		return $errores_cliente;
+        unset($_SESSION["errores_cliente"]);
+        //Validacion tlfn 9 digitos
+        if(!preg_match("/^[0-9]{9}$/", $nuevoCliente["TLF_CLIENTE"])){
+            $errores_cliente[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
+        }
+
+        if ($nuevoCliente["NOMBRE_CLIENTE"] == "")
+            $errores_cliente[] = "<p>El nombre no puede estar vacio</p>";
+
+        if ($nuevoCliente["APELLIDOS_CLIENTE"] == "")
+            $errores_cliente[] = "<p>Los apellidos no pueden estar vacios</p>";
+
+        if (count($errores_cliente)>0) {
+            $_SESSION["errores_cliente"] = $errores_cliente;
+            Header('Location: clientes.php');
+            return false;
+        } else {
+            return true;
+        }
 	}
 
 	//Añadir a la base de datos

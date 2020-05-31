@@ -42,6 +42,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ProyectoBarBlancaPaloma" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMP" />
   <component name="ProjectId" id="1awM2oGcxMeM9YoKk3LO0I57gp2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -117,10 +118,14 @@
       <workItem from="1590513872631" duration="11959000" />
       <workItem from="1590589577929" duration="8044000" />
       <workItem from="1590617023720" duration="4000000" />
+<<<<<<< HEAD
       <workItem from="1590786976321" duration="5274000" />
       <workItem from="1590830704314" duration="21407000" />
       <workItem from="1590862364657" duration="14608000" />
       <workItem from="1590879718258" duration="10153000" />
+=======
+      <workItem from="1590848087352" duration="19384000" />
+>>>>>>> 7addf823a650e8915f07b03cec9f08ceaf76f21f
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
@@ -187,6 +192,10 @@
     <state x="927" y="241" key="run.anything.popup" timestamp="1590877372442">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+<<<<<<< HEAD
     <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590877372442" />
+=======
+    <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
+>>>>>>> 7addf823a650e8915f07b03cec9f08ceaf76f21f
   </component>
 </project>
