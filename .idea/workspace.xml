@@ -8,7 +8,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -63,9 +65,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\proyecto_bar_pruebas\imagenes" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma\sql" />
       <recent name="C:\Users\Admin\PhpstormProjects\bar_blanca_paloma" />
@@ -113,7 +118,14 @@
       <workItem from="1590513872631" duration="11959000" />
       <workItem from="1590589577929" duration="8044000" />
       <workItem from="1590617023720" duration="4000000" />
-      <workItem from="1590848087352" duration="15399000" />
+<<<<<<< HEAD
+      <workItem from="1590786976321" duration="5274000" />
+      <workItem from="1590830704314" duration="21407000" />
+      <workItem from="1590862364657" duration="14608000" />
+      <workItem from="1590879718258" duration="10153000" />
+=======
+      <workItem from="1590848087352" duration="19384000" />
+>>>>>>> 7addf823a650e8915f07b03cec9f08ceaf76f21f
     </task>
     <task id="LOCAL-00001" summary="Subiendo al repo">
       <created>1587752195657</created>
@@ -126,7 +138,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -169,17 +181,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1590394226336" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1590542709909">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1590886666344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590542709909" />
-    <state x="533" y="151" width="998" height="708" key="SettingsEditor" timestamp="1590311871782">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590886666344" />
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor" timestamp="1590854392236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="533" y="151" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590311871782" />
-    <state x="927" y="241" key="run.anything.popup" timestamp="1587995782140">
+    <state x="533" y="151" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590854392236" />
+    <state x="927" y="241" key="run.anything.popup" timestamp="1590877372442">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+<<<<<<< HEAD
+    <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590877372442" />
+=======
     <state x="927" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587995782140" />
+>>>>>>> 7addf823a650e8915f07b03cec9f08ceaf76f21f
   </component>
 </project>

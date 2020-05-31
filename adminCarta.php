@@ -3,7 +3,7 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionProductos.php");
-	
+
 	if (isset($_SESSION["producto"])){
 		$producto = $_SESSION["producto"];
 		unset($_SESSION["producto"]);
@@ -72,7 +72,7 @@
     <?php foreach ($productos as $media){
     	 		if($media["DESCRIPCION"] == 'Media') { ?>
 	<tr>
-		<form method="post" action="controlador_productos.php">
+		<form method="post" action="controlador_lineaPedidos.php">
 			<input id="ID_PRODUCTO" name="ID_PRODUCTO" type="hidden" value="<?php echo $media["ID_PRODUCTO"]; ?>" />
 			<input id="NOMBRE_PRODUCTO1" name="NOMBRE_PRODUCTO1" type="hidden" value="<?php echo $media["NOMBRE_PRODUCTO1"]; ?>" />
 			<input id="PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" type="hidden" value="<?php echo $media["PRECIO_PRODUCTO"]; ?>" />

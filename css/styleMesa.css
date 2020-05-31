@@ -72,6 +72,7 @@ tr:nth-child(even) {
   width: 200px;
 }
 
+
 .botones{
 	border: #0F398C 2.5px solid;
 	background-color: #0F398C;
@@ -87,4 +88,7 @@ tr:nth-child(even) {
   transition: 0.3s;
   font-weight: bold;
   cursor: pointer;
-}
+
+td, button:hover {
+    background-color: rgba(72,76,79,0.92);
+

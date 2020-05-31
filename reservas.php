@@ -81,20 +81,16 @@ if (isset($errores_reserva) && count($errores_reserva)>0) {
                         <td><?php echo $reserva["ID_CLIENTE1"] ?></td>
                         <td><?php echo $reserva["ID_MESA1"] ?></td>
                     <?php } ?>
-                    <?php if ($login["categoria"] == "GERENTE")  { ?>
                         <?php if (!isset($RESERVA_EDIT)) { ?>
                             <td><button type="submit" id="editar" name="editar" class="botonEdit">Edit</button></td>
                             <td><button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
                         <?php }	else { ?>
                             <td><button type="submit" id="grabar" name="grabar" class="botonGrabar">OK</button></td>
                         <?php } ?>
-                        <?php
-                    } ?>
                 </form>
             </tr>
             <?php
         } ?>
-        <?php if ($login["categoria"] == "GERENTE")  { ?>
             <form id="addReserva" method="get" action="gestionReservas.php" novalidate>
                 <tr>
                     <td></td>
@@ -105,8 +101,6 @@ if (isset($errores_reserva) && count($errores_reserva)>0) {
                     <td><input type="submit" value="ADD" /></td>
                 </tr>
             </form>
-            <?php
-        } ?>
     </table>
 </div>
 </body>

@@ -62,17 +62,23 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
 
         <?php foreach ($clientes as $cliente) { ?>
             <tr>
-                <form method="post" action="gestionClientes.php">
-                    <input id="ID_CLIENTE" name="ID_CLIENTE" type="hidden" value="<?php echo $cliente["ID_CLIENTE"]; ?>" />
-                    <input id="TLF_CLIENTE" name="TLF_CLIENTE" type="hidden" value="<?php echo $cliente["TLF_CLIENTE"]; ?>" />
-                    <input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="hidden" value="<?php echo $cliente["NOMBRE_CLIENTE"]; ?>" />
-                    <input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="hidden" value="<?php echo $cliente["APELLIDOS_CLIENTE"]; ?>" />
+                <form name="gestionCliente" id="gestionCliente" method="post" action="gestionClientes.php" onsubmit="return validarDatos('gestionCliente')">
+                    <input id="ID_CLIENTE" name="ID_CLIENTE" type="hidden" value="<?php echo $cliente["ID_CLIENTE"]; ?>" required/>
+                    <input id="TLF_CLIENTE" name="TLF_CLIENTE" type="hidden" value="<?php echo $cliente["TLF_CLIENTE"]; ?>" pattern="/^[0-9]{9}$/" required/>
+                    <input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="hidden" value="<?php echo $cliente["NOMBRE_CLIENTE"]; ?>" required/>
+                    <input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="hidden" value="<?php echo $cliente["APELLIDOS_CLIENTE"]; ?>" required/>
 
                     <td><?php echo $cliente["ID_CLIENTE"] ?></td>
                     <?php if (isset($CLIENTE_EDIT) && $cliente["ID_CLIENTE"] == $CLIENTE_EDIT["ID_CLIENTE"]) { ?>
+
                         <td class="datos"><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $cliente['TLF_CLIENTE']?>" required/></td>
                         <td class="datos"><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $cliente['NOMBRE_CLIENTE']?>" required/></td>
                         <td class="datos"><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $cliente['APELLIDOS_CLIENTE']?>" required/></td>
+
+                        <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $cliente['TLF_CLIENTE']?>" pattern="/^[0-9]{9}$/" required/></td>
+                        <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $cliente['NOMBRE_CLIENTE']?>" required/></td>
+                        <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $cliente['APELLIDOS_CLIENTE']?>" required/></td>
+
                     <?php }	else { ?>
                         <td class="datos"><?php echo $cliente["TLF_CLIENTE"] ?></td>
                         <td class="datos"><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
@@ -85,24 +91,40 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
                         <?php }	else { ?>
                             <td><button type="submit" id="grabar" name="grabar" class="botonGrabar">OK</button></td>
                         <?php } ?>
-                        <?php
-                    } ?>
                 </form>
             </tr>
+
           
         <?php if ($login["categoria"] == "GERENTE")  { ?>
             <form id="addCliente" method="get" action="gestionClientes.php" novalidate>
+
+            <?php
+        } ?>
+            <form name="addCliente" id="addCliente" method="get" action="gestionClientes.php" onsubmit="return validarDatos('addCliente')">
+
                 <tr>
                 <td></td>
-                <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['TLF_CLIENTE']?>" required/></td>
+                <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['TLF_CLIENTE']?>" pattern="/^[0-9]{9}$/" required/></td>
                 <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['NOMBRE_CLIENTE']?>" required/></td>
                 <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['APELLIDOS_CLIENTE']?>" required/></td>
                 <td><input type="submit" value="ADD" /></td>
                 </tr>
              </form>
-            <?php
-        } ?>
     </table>
 </div>
+
+<script>
+    function validarDatos(name) {
+        var tlf = document.forms[name]["TLF_CLIENTE"].value;
+        var nombre = document.forms[name]["NOMBRE_CLIENTE"].value;
+        var apellidos = document.forms[name]["APELLIDOS_CLIENTE"].value;
+        if (nombre == "")
+            return false;
+        if (apellidos == "")
+            return false;
+        if (!tlf.match("/^[0-9]{9}$/"))
+            return false;
+    }
+</script>
 </body>
 </html>
