@@ -14,7 +14,7 @@
 		
 	$errores = validarDatos($datos);
 	
-	if($errores == "") {
+	if($errores == null) {
 			
 	$conexion = crearConexionBD();
 	$empleados = consultarEmpleado($conexion, $nif, $pass);
@@ -27,15 +27,14 @@
 	    $usuario["nif"] = $nif;
         $usuario["categoria"] = $categoria;
 		$_SESSION["login"] = $usuario;
-		header("Location: menu.php");
+		header("Location: menu.html");
 	}
 }
-	}
-
+}
 	
 	function validarDatos($datos){
 		
-	$errores = "";
+	$errores = null;
 		
 	if($datos["nif"] == ""){
 		$errores[] = "<p>El nif no puede estar vacio</p>";
@@ -59,7 +58,6 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/login_session.css" />
-	<script src="js/validacion_login.js" type="text/javascript"></script>
 	<title>Pagina login</title>
 </head>
 <body>
@@ -85,15 +83,15 @@
     		echo "</div>";
   		}
 	?>
-	
-	<form id="loginForm" action="login_sesion.php" method="post" onsubmit="return validateForm()">
-		<input id="nif" name="nif" type="text" placeholder="NIF..." pattern="^[0-9]{8}[A-Z]" title="8 dígitos y una letra mayúscula" required/> </br></br>
-		<input id="pass" name="pass" type="password" placeholder="Password..." required oninput="passwordValidation();"/>
-    	</br></br>
-		<input type="submit" class="entrar" name="submit" value="Iniciar sesión">
-	</form>
 	</br>
-	<p>SI ERES UN NUEVO EMPLEADO REGISTRATE PULSANDO <a href="registro_usuario.php">AQUÍ</a></p>
+	<form action="login_sesion.php" method="post" novalidate>
+		<input id="nif" name="nif" type="text" placeholder="NIF..." pattern="^[0-9]{8}[A-Z]" title="8 dígitos y una letra mayúscula" required/> </br></br>
+		<input id="pass" name="pass" type="password" placeholder="Password..." required/>
+    	</br></br>
+		<input type="submit" name="submit" value="submit">
+	</form>
+
+	<p>¿No estás registrado?<a href="registro_usuario.php">Registrate</a></p>
 
 </div>
 </main>

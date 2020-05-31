@@ -22,8 +22,9 @@ if (isset($_REQUEST["ID_LINEA_PEDIDO"])) {
     if (isset($_REQUEST["añadir"])) Header("Location: addProductoFactura.php");
 
 } else if (isset($_REQUEST["ID_PEDIDO_CERRAR"])){
-    $idCerrar = $_REQUEST["ID_PEDIDO_CERRAR"];
-    $_SESSION["idCerrar"] = $idCerrar;
+    $cerrar["ID_PEDIDO_CERRAR"] = $_REQUEST["ID_PEDIDO_CERRAR"];
+    $cerrar["IMPORTE"] = $_REQUEST["IMPORTE"];
+    $_SESSION["cerrar"] = $cerrar;
 
     if (isset($_REQUEST["cerrar"])) Header("Location: cerrarFactura.php");
 

@@ -81,12 +81,6 @@
 		if ($nuevoUsuario["fechaNacimiento"] == ""){
 			$errores[] = "<p>La fecha de nacimiento no puede estar vacía</p>";
 			
-		// Validación del perfil
-	
-		if(($nuevoUsuario["categoria"] != "GERENTE" && $nuevoUsuario["categoria"] != "CAMARERO" && $nuevoUsuario["categoria"] != "COCINERO")){
-		$errores[]= "<p>Debe seleccionar un perfil de empleado</p>";
-	}
-			
 		//Validacion mayor de edad
 		} else {
 			$mayor = 18;

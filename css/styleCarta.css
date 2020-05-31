@@ -1,72 +1,62 @@
 
 body {
-  background-color: #0F398C;
-  font-family: "Lato", sans-serif;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #0F398C;
 }
 
 .carta_inicio {
-  float: left;
-  background-color: #0F398C;
-  width: 13%;
-  height: 150px;
+    float: left;
+    width: 25%;
+    height: 300px;
 }
 
 .carta_button {
-  display: block;
-  background-color: #A8A8A8;
-  color: black;
-  padding: 3px 10px;
-  width: 100%;
-  border: black 1.3px solid;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 15px;
-  font-weight: bolder;
-  font-family: "Lato", sans-serif;
+    display: block;
+    background-color: gray;
+    color: black;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Fira Code";
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .carta_button:hover {
-    background-color: #727373;
+    background-color: rgba(72,76,79,0.92);
 }
 
-.carta_button.active{
-    background-color: #727373;
+.carta_button.active {
+    background-color: rgba(72,76,79,0.92);
 }
 
 .carta_cont {
-  float: left;
-  border: black 2.5px solid;
-  background: #FFFFFF;
-  padding: 0px 12px;
-  height: 500px;
+    float: left;
+    padding: 0px 12px;
+    width: 70%;
+    border-left: none;
+    height: 100%;
+    align-content: center;
 }
 
 .tabla_carta {
-  margin: 20px;
-  border: black 2.5px solid;
-  border-collapse: collapse;
-  background: #FAFAFA;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
-
+.tabla_carta th,td {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-collapse: collapse;
+}
 
 .tabla_carta th {
-  border: black 2.5px solid;
-  background-color: #A8A8A8;
-  padding:7px;
-  font-size:15px;
-  width: 200px;
+     background-color: #757575;
 }
 
 .tabla_carta td {
-  border-left: black 2.5px solid;
-  border-right: black 2.5px solid;
-  padding:7px;
-  font-size:15px;
-  width: 200px;
+    background-color: #A8A8A8;
 }

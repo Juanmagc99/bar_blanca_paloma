@@ -43,8 +43,8 @@ cerrarConexionBD($conexion);
     include_once("Header.html");
     ?>
 </div>
-<div class="muestra_factura">
-    <table class="tabla_factura">
+<div class="muestra">
+    <table class="tabla">
 
         <?php
         if (isset($productos_pedidos) and !empty($productos_pedidos)) {
@@ -127,6 +127,7 @@ cerrarConexionBD($conexion);
             <tr class="Cerrar">
                 <form method="post" action="controlador_factura.php">
                     <input id="ID_PEDIDO_CERRAR" name="ID_PEDIDO_CERRAR" type="hidden" value="<?php echo $idPedido; ?>"/>
+                    <input id="IMPORTE" name="IMPORTE" type="hidden" value="<?php echo $res; ?>"/>
                     <td style="visibility:hidden;">
                     <td style="visibility:hidden;">
                     <td>

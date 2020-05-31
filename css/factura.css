@@ -1,19 +1,19 @@
-.tabla_factura th,td {
+.tabla th,td {
     border: 1px solid black;
     border-radius: 7px;
     border-collapse: collapse;
 }
 
-.tabla_factura {
+.tabla {
     padding-left: 40%;
     width: 60%;
 }
 
-.tabla_factura th {
+.tabla th {
     background-color: #757575;
 }
 
-.tabla_factura td {
+.tabla td {
     background-color: #A8A8A8;
 }
 
@@ -21,6 +21,6 @@ body {
     background-color: #0F398C;
 }
 
-.muestra_factura {
+.muestra {
     padding-top: 45px;
 }

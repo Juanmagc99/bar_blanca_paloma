@@ -64,11 +64,13 @@ function añadir_factura($conexion,$idMesa){
         return $e->getMessage();
     }
 }
-function cerrarFactura($conexion, $idCerrar){
+function cerrarFactura($conexion, $idCerrar,$importe){
     try {
-        $stmt=$conexion->prepare('CALL CERRAR_PEDIDO(:idPedido)');
+        $stmt=$conexion->prepare('CALL CERRAR_PEDIDO(:idPedido,:importe)');
         $stmt->bindParam(':idPedido',$idCerrar);
+        $stmt->bindParam(':importe',$importe);
         $stmt->execute();
+
         return "";
     } catch(PDOException $e) {
         return $e->getMessage();
