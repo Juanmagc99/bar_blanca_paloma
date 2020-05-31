@@ -56,14 +56,21 @@ foreach ($reservas as $row) {
 <div class="muestra_mesas" id="INTERIOR">
     <table class="tabla_mesas">
         <tr>
-            <th>ID_MESA</th>
-            <th>ESTADO</th>
+            <th class="cabecera">ID_MESA</th>
+            <th class="cabecera">ESTADO</th>
+            <th class="botones"></th>
         </tr>
         <?php foreach ($mesas_interiores as $mesa) { ?>
+
+            <tr>
+                <td class="datos"><?php echo $mesa["ID_MESA"] ?></td>
+                <td class="datos"><?php foreach ($contendor as $res){
+
         <form method="post" action="controlador_mesas.php">
             <input id="ID_MESA" name="ID_MESA" type="hidden" value="<?php echo $mesa["ID_MESA"]; ?>" />
                 <td><?php echo $mesa["ID_MESA"] ?></td>
                 <td><?php foreach ($contendor as $res) {
+
                         $fecha_entrada = $res["HORA_ENTRADA"];
                         $fecha_salida = $res["HORA_SALIDA"];
                         $estado_mesa = "DISPONIBLE";
@@ -74,6 +81,12 @@ foreach ($reservas as $row) {
                     }
                     echo $estado_mesa;
                     ?></td>
+
+                <td class="botones"><button class="factura">FACTURA</button></td>
+                <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
+                    <td><img src="imagenes/flecha.png"></td>
+               <?php }?>
+
                 <td class="datos">
                     <button type="submit" id="enviar_datos" name="enviar_datos" class="botonDatos">Factura</button></td>
                 </td>
@@ -81,6 +94,7 @@ foreach ($reservas as $row) {
                     <td>&#8592</td>
                 <?php } ?>
         </form>
+
             </tr>
 
             <?php
@@ -90,10 +104,22 @@ foreach ($reservas as $row) {
 <div class="muestra_mesas" id="INTERIOR">
     <table class="tabla_mesas">
         <tr>
-            <th>ID_MESA</th>
-            <th>ESTADO</th>
+            <th class="cabecera">ID_MESA</th>
+            <th class="cabecera">ESTADO</th>
+            <th class="botones"></th>
         </tr>
         <?php foreach ($mesas_exteriores as $mesa) { ?>
+
+            <tr>
+                <td class="datos"><?php echo $mesa["ID_MESA"] ?></td>
+                <td class="datos"><?php foreach ($contendor as $res){
+                    $fecha_entrada = $res["HORA_ENTRADA"];
+                    $fecha_salida = $res["HORA_SALIDA"];
+                    $estado_mesa = "DISPONIBLE";
+                    if (strcmp($res["ID_MESA1"],$mesa["ID_MESA"]) == 0 && ($fecha_entrada > $ahora &&
+                        $fecha_salida < $ahora)){
+                           $estado_mesa = "OCUPADO";
+
             <form method="post" action="controlador_mesas.php">
                 <input id="ID_MESA" name="ID_MESA" type="hidden" value="<?php echo $mesa["ID_MESA"]; ?>" />
                 <td><?php echo $mesa["ID_MESA"] ?></td>
@@ -104,14 +130,20 @@ foreach ($reservas as $row) {
                         if (strcmp($res["ID_MESA1"], $mesa["ID_MESA"]) == 0 && ($fecha_entrada > $ahora &&
                                 $fecha_salida < $ahora)) {
                             $estado_mesa = "OCUPADO";
+
                         }
                     }
                     echo $estado_mesa;
                     ?></td>
+
+                <td class="botones"><button class="factura">FACTURA</button></td>
+                <?php if($mesa["DNI_EMPLEADO1"] == $usuario["nif"]){?>
+
                 <td class="datos">
                     <button type="submit" id="enviar_datos" name="enviar_datos" class="botonDatos">Factura</button></td>
                 </td>
                 <?php if ($mesa["DNI_EMPLEADO1"] == $usuario["nif"]) { ?>
+
                     <td>&#8592</td>
                 <?php } ?>
             </form>

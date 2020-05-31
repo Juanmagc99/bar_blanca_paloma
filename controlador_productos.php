@@ -9,7 +9,7 @@
 		$producto["CANTIDAD"] = $_REQUEST["CANTIDAD"];
 		
 		$_SESSION["producto"] = $producto;
-			
+		
 		if (isset($_REQUEST["editar"])) Header("Location: adminCarta.php"); 
 		else if (isset($_REQUEST["grabar"])) Header("Location: editarProducto.php");
 		else Header("Location: borrarProducto.php");

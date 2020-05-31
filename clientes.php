@@ -53,10 +53,11 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
 <div class="muestra_clientes">
     <table class="tabla_clientes">
         <tr>
-            <th>ID</th>
-            <th>TELÉFONO</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
+            <th class="cabecera">ID</th>
+            <th class="cabecera">TELÉFONO</th>
+            <th class="cabecera">NOMBRE</th>
+            <th class="cabecera">APELLIDOS</th>
+            <th class="botones"></th>
         </tr>
 
         <?php foreach ($clientes as $cliente) { ?>
@@ -70,25 +71,23 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
                     <td><?php echo $cliente["ID_CLIENTE"] ?></td>
                     <?php if (isset($CLIENTE_EDIT) && $cliente["ID_CLIENTE"] == $CLIENTE_EDIT["ID_CLIENTE"]) { ?>
                         <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $cliente['TLF_CLIENTE']?>" pattern="[0-9]{9}" required/></td>
-                        <td><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $cliente['NOMBRE_CLIENTE']?>" required/></td>
-                        <td><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $cliente['APELLIDOS_CLIENTE']?>" required/></td>
+                        <td class="datos"><input id="NOMBRE_CLIENTE" name="NOMBRE_CLIENTE" type="text" size="40" value="<?php echo $cliente['NOMBRE_CLIENTE']?>" required/></td>
+                        <td class="datos"><input id="APELLIDOS_CLIENTE" name="APELLIDOS_CLIENTE" type="text" size="40" value="<?php echo $cliente['APELLIDOS_CLIENTE']?>" required/></td>
                     <?php }	else { ?>
-                        <td><?php echo $cliente["TLF_CLIENTE"] ?></td>
-                        <td><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
-                        <td><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
+                        <td class="datos"><?php echo $cliente["TLF_CLIENTE"] ?></td>
+                        <td class="datos"><?php echo $cliente["NOMBRE_CLIENTE"] ?></td>
+                        <td class="datos"><?php echo $cliente["APELLIDOS_CLIENTE"] ?></td>
                     <?php } ?>
                         <?php if (!isset($CLIENTE_EDIT)) { ?>
-                            <td><button type="submit" id="editar" name="editar" class="botonEdit">Edit</button></td>
-                            <td><button type="submit" id="copiar" name="copiar" class="botonCopy">Copy</button></td>
-                            <td><button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
+                            <td class="botones"><button type="submit" id="editar" name="editar" class="botonEdit">Edit</button>
+                            <button type="submit" id="copiar" name="copiar" class="botonCopy">Copy</button>
+                            <button type="submit" id="borrar" name="borrar" class="botonDelete">Delete</button></td>
                         <?php }	else { ?>
                             <td><button type="submit" id="grabar" name="grabar" class="botonGrabar">OK</button></td>
                         <?php } ?>
                 </form>
             </tr>
-            <?php
-        } ?>
-            <form name="formulario_cliente" id="addCliente" method="get" action="gestionClientes.php" onsubmit="return validarDatos('addCliente')">
+            <form name="addCliente" id="addCliente" method="get" action="gestionClientes.php" onsubmit="return validarDatos('addCliente')">
                 <tr>
                 <td></td>
                 <td><input id="TLF_CLIENTE" name="TLF_CLIENTE" type="text" size="40" value="<?php echo $formulario_cliente['TLF_CLIENTE']?>" pattern="[0-9]{9}" required/></td>
@@ -99,7 +98,6 @@ if (isset($errores_cliente) && count($errores_cliente)>0) {
              </form>
     </table>
 </div>
-
 <script>
     function validarDatos(name) {
         var tlf = document.forms[name]["TLF_CLIENTE"].value;

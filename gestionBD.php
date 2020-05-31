@@ -8,11 +8,11 @@ function crearConexionBD()
 	$usuario = "IISSI";
 	$password = "IISSI";
 	
-	//$usuario="BAR_BLANCA_PALOMA";
-	//$password="iissi";
+	$usuario="BAR_BLANCA_PALOMA";
+	$password="iissi";
 	
-	$usuario = "MIGUEL";
-	$password = "miguel";
+	//$usuario = "MIGUEL";
+	//$password = "miguel";
 
 	try{
 		/* Indicar que las sucesivas conexiones se puedan reutilizar */	
