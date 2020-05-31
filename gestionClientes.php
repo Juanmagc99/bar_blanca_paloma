@@ -35,7 +35,6 @@
                             FORMULARIO
        ======================================================= */
 	if (isset($_SESSION["formulario_cliente"])) {
-
 		$nuevoCliente["TLF_CLIENTE"] = $_REQUEST["TLF_CLIENTE"];
 		$nuevoCliente["NOMBRE_CLIENTE"] = $_REQUEST["NOMBRE_CLIENTE"];
 		$nuevoCliente["APELLIDOS_CLIENTE"] = $_REQUEST["APELLIDOS_CLIENTE"];

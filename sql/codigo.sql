@@ -248,7 +248,7 @@ w_Cantidad INT)
 IS
 BEGIN
 INSERT INTO producto(id_producto, nombre_producto1, precio_producto, Descripcion, Cantidad)
-VALUES (sec_producto.currval, w_Nombre, w_Precio_producto, w_Descripcion, w_Cantidad);
+VALUES (sec_producto.nextval, w_Nombre, w_Precio_producto, w_Descripcion, w_Cantidad);
 END add_producto;
 /
 CREATE OR REPLACE PROCEDURE add_cliente
@@ -258,7 +258,7 @@ w_apellidos_cliente VARCHAR)
 IS
 BEGIN
 INSERT INTO cliente(id_cliente, tlf_cliente, nombre_cliente, apellidos_cliente)
-VALUES (sec_cliente.currval, w_tlf_cliente, w_nombre_cliente, w_apellidos_cliente);
+VALUES (sec_cliente.nextval, w_tlf_cliente, w_nombre_cliente, w_apellidos_cliente);
 END add_cliente;
 /
 CREATE OR REPLACE PROCEDURE add_reserva
@@ -269,7 +269,7 @@ w_id_mesa1 INT)
 IS
 BEGIN
 INSERT INTO reserva(id_reserva, HoraEntrada_reserva, HoraSalida_reserva, id_cliente1, id_mesa1)
-VALUES (sec_reserva.currval, w_HoraEntrada_reserva, w_HoraSalida_reserva, w_id_cliente1,
+VALUES (sec_reserva.nextval, w_HoraEntrada_reserva, w_HoraSalida_reserva, w_id_cliente1,
 w_id_mesa1);
 END add_reserva;
 /
@@ -280,7 +280,7 @@ w_dni_empleado1 VARCHAR)
 IS
 BEGIN
 INSERT INTO mesa(id_mesa,tipo_mesa,capacidad,dni_empleado1)
-VALUES (sec_mesa.currval,w_tipo_mesa,w_capacidad,w_dni_empleado1);
+VALUES (sec_mesa.nextval,w_tipo_mesa,w_capacidad,w_dni_empleado1);
 END add_mesa;
 /
 CREATE OR REPLACE PROCEDURE add_proveedor
@@ -297,7 +297,7 @@ CREATE OR REPLACE PROCEDURE add_pedido
 IS
 BEGIN
 INSERT INTO pedido(id_pedido,id_mesa2,Fecha_pedido)
-VALUES (sec_pedido.currval,w_id_mesa2,CURRENT_DATE);
+VALUES (sec_pedido.nextval,w_id_mesa2,CURRENT_DATE);
 END add_pedido;
 /
 CREATE OR REPLACE PROCEDURE add_lineapedido
@@ -307,7 +307,7 @@ w_cantidad_pedido INT)
 IS
 BEGIN
 INSERT INTO lineapedido(id_linea_pedido,id_pedido1,nombre_producto2,cantidad_pedido)
-VALUES (sec_lineapedido.currval,w_id_pedido1, w_nombre_producto2,w_cantidad_pedido);
+VALUES (sec_lineapedido.nextval,w_id_pedido1, w_nombre_producto2,w_cantidad_pedido);
 END add_lineapedido;
 /
 CREATE OR REPLACE PROCEDURE add_lineareposicion
@@ -318,7 +318,7 @@ IS
 BEGIN
 INSERT INTO LineaReposicion(id_reposicion,cantidad_reposicion,Fecha_reposicion, nombre_p1,
 id_producto1)
-VALUES (sec_lineareposicion.currval,w_Cantidad_reposicion, CURRENT_DATE,w_nombre_p1,
+VALUES (sec_lineareposicion.nextval,w_Cantidad_reposicion, CURRENT_DATE,w_nombre_p1,
 w_id_producto1);
 END add_lineareposicion;
 /
@@ -340,7 +340,7 @@ w_id_lineaturno1 INT)
 IS
 BEGIN
 INSERT INTO turno(id_turno, tipo_turno, HoraEntrada, HoraSalida, id_lineaturno1)
-VALUES (sec_turno.currval,w_tipo_turno,w_HoraEntrada,w_HoraSalida,w_id_lineaturno1);
+VALUES (sec_turno.nextval,w_tipo_turno,w_HoraEntrada,w_HoraSalida,w_id_lineaturno1);
 END add_turno;
 /
 CREATE OR REPLACE PROCEDURE add_lineaturnos
@@ -349,7 +349,7 @@ w_DNI1 VARCHAR)
 IS
 BEGIN
 INSERT INTO LineaTurnos(id_lineaturno, fecha_turno, DNI1)
-VALUES (sec_lineaturnos.currval,w_fecha_turno, w_DNI1);
+VALUES (sec_lineaturnos.nextval,w_fecha_turno, w_DNI1);
 END add_lineaturnos;
 /
 CREATE OR REPLACE PROCEDURE producto_pedidos
@@ -446,6 +446,7 @@ END;
 --=====================================
 -- TRIGGERS
 --=====================================
+/*
 CREATE OR REPLACE TRIGGER GENERA_PK_CLIENTE
 BEFORE INSERT ON cliente
 FOR EACH ROW
@@ -509,6 +510,7 @@ BEGIN
 SELECT sec_turno.NEXTVAL INTO :NEW.id_turno FROM DUAL;
 END;
 /
+*/
 CREATE OR REPLACE TRIGGER existencias
 AFTER
 UPDATE ON producto

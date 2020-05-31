@@ -62,17 +62,17 @@ if (isset($errores_reserva) && count($errores_reserva)>0) {
 
         <?php foreach ($reservas as $reserva) { ?>
             <tr>
-                <form method="post" action="gestionReservas.php">
-                    <input id="ID_RESERVA" name="ID_RESERVA" type="hidden" value="<?php echo $reserva["ID_RESERVA"]; ?>" />
-                    <input id="HORA_ENTRADA" name="HORA_ENTRADA" type="hidden" value="<?php echo $reserva["HORA_ENTRADA"]; ?>" />
-                    <input id="HORA_SALIDA" name="HORA_SALIDA" type="hidden" value="<?php echo $reserva["HORA_SALIDA"]; ?>" />
-                    <input id="ID_CLIENTE1" name="ID_CLIENTE1" type="hidden" value="<?php echo $reserva["ID_CLIENTE1"]; ?>" />
-                    <input id="ID_MESA1" name="ID_MESA1" type="hidden" value="<?php echo $reserva["ID_MESA1"]; ?>" />
+                <form name="gestionReservas" id="gestionReservas" method="post" action="gestionReservas.php" onsubmit="return validarDatos('gestionReservas')">
+                    <input id="ID_RESERVA" name="ID_RESERVA" type="hidden" value="<?php echo $reserva["ID_RESERVA"]; ?>" required/>
+                    <input id="HORA_ENTRADA" name="HORA_ENTRADA" type="hidden" value="<?php echo $reserva["HORA_ENTRADA"]; ?>" required/>
+                    <input id="HORA_SALIDA" name="HORA_SALIDA" type="hidden" value="<?php echo $reserva["HORA_SALIDA"]; ?>" required/>
+                    <input id="ID_CLIENTE1" name="ID_CLIENTE1" type="hidden" value="<?php echo $reserva["ID_CLIENTE1"]; ?>" required/>
+                    <input id="ID_MESA1" name="ID_MESA1" type="hidden" value="<?php echo $reserva["ID_MESA1"]; ?>" required/>
 
                     <td><?php echo $reserva["ID_RESERVA"] ?></td>
                     <?php if (isset($RESERVA_EDIT) && $reserva["ID_RESERVA"] == $RESERVA_EDIT["ID_RESERVA"]) { ?>
-                        <td><input id="HORA_ENTRADA" name="HORA_ENTRADA" type="text" size="40" value="<?php echo $reserva['HORA_ENTRADA']?>" required/></td>
-                        <td><input id="HORA_SALIDA" name="HORA_SALIDA" type="text" size="40" value="<?php echo $reserva['HORA_SALIDA']?>" required/></td>
+                        <td><input id="HORA_ENTRADA" name="HORA_ENTRADA" type="datetime-local" size="40" value="<?php echo date('Y-m-d\TH:i', strtotime($reserva["HORA_ENTRADA"]));?>" required/></td>
+                        <td><input id="HORA_SALIDA" name="HORA_SALIDA" type="datetime-local" size="40" value="<?php echo date('Y-m-d\TH:i', strtotime($reserva["HORA_SALIDA"]));?>" required/></td>
                         <td><input id="ID_CLIENTE1" name="ID_CLIENTE1" type="text" size="40" value="<?php echo $reserva['ID_CLIENTE1']?>" required/></td>
                         <td><input id="ID_MESA1" name="ID_MESA1" type="text" size="40" value="<?php echo $reserva['ID_MESA1']?>" required/></td>
                     <?php }	else { ?>
@@ -91,11 +91,11 @@ if (isset($errores_reserva) && count($errores_reserva)>0) {
             </tr>
             <?php
         } ?>
-            <form id="addReserva" method="get" action="gestionReservas.php" novalidate>
+            <form name="addReserva" id="addReserva" method="get" action="gestionReservas.php" onsubmit="return validarDatos('addReserva')">
                 <tr>
                     <td></td>
-                    <td><input id="HORA_ENTRADA" name="HORA_ENTRADA" type="text" size="40" value="<?php echo $formulario_reserva['HORA_ENTRADA']?>" required/></td>
-                    <td><input id="HORA_SALIDA" name="HORA_SALIDA" type="text" size="40" value="<?php echo $formulario_reserva['HORA_SALIDA']?>" required/></td>
+                    <td><input id="HORA_ENTRADA" name="HORA_ENTRADA" type="datetime-local" size="40" value="<?php echo date('Y-m-d\TH:i', strtotime($formulario_reserva["HORA_ENTRADA"]));?>" required/></td>
+                    <td><input id="HORA_SALIDA" name="HORA_SALIDA" type="datetime-local" size="40" value="<?php echo date('Y-m-d\TH:i', strtotime($formulario_reserva["HORA_SALIDA"]));?>" required/></td>
                     <td><input id="ID_CLIENTE1" name="ID_CLIENTE1" type="text" size="40" value="<?php echo $formulario_reserva['ID_CLIENTE1']?>" required/></td>
                     <td><input id="ID_MESA1" name="ID_MESA1" type="text" size="40" value="<?php echo $formulario_reserva['ID_MESA1']?>" required/></td>
                     <td><input type="submit" value="ADD" /></td>
@@ -103,5 +103,23 @@ if (isset($errores_reserva) && count($errores_reserva)>0) {
             </form>
     </table>
 </div>
+
+<script>
+    function validarDatos(name) {
+        var HORA_ENTRADA = document.forms[name]["HORA_ENTRADA"].value;
+        var HORA_SALIDA = document.forms[name]["HORA_SALIDA"].value;
+        var ID_CLIENTE1 = document.forms[name]["ID_CLIENTE1"].value;
+        var ID_MESA1 = document.forms[name]["ID_MESA1"].value;
+        if (HORA_ENTRADA == "")
+            return false;
+        if (HORA_SALIDA == "")
+            return false;
+        if (ID_CLIENTE1 == "")
+            return false;
+        if (ID_MESA1 == "")
+            return false;
+        return true;
+    }
+</script>
 </body>
 </html>
