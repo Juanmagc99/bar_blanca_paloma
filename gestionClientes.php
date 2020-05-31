@@ -61,6 +61,12 @@
             $errores_cliente[] = "<p>Formato de numero de teléfono incorrecto: " . $nuevoCliente["TLF_CLIENTE"]. "</p>";
         }
 
+        if ($nuevoCliente["NOMBRE_CLIENTE"] == "")
+            $errores_cliente[] = "<p>El nombre no puede estar vacio</p>";
+
+        if ($nuevoCliente["APELLIDOS_CLIENTE"] == "")
+            $errores_cliente[] = "<p>Los apellidos no pueden estar vacios</p>";
+
         if (count($errores_cliente)>0) {
             $_SESSION["errores_cliente"] = $errores_cliente;
             Header('Location: clientes.php');
